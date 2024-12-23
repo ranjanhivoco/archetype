@@ -37,7 +37,7 @@ const QuizComponent = ({ step, ques, onClick, onTouchEnd }) => {
                   className={`pressable w-full h-full  text-xs font-normal text-left px-4 py-3 rounded-xl transition-colors border
                   ${
                     selectedOptionIndex === index
-                      ? " border-[#00A55C]/20 bg-[#00A55C]/10 active:ring-2 active:ring-[#00A55C]/20"
+                      ? " border-[#00A55C]/20 bg-[#00A55C]/20 active:ring-2 active:ring-[#00A55C]/20"
                       : "border-black/25"
                   }`}
                 >
@@ -50,14 +50,16 @@ const QuizComponent = ({ step, ques, onClick, onTouchEnd }) => {
       </div>
 
       {/* fake next 2 cards below */}
+
+
       {step <= 9 && (
         // {/* farther div  piche wala*/}
-        <div className="absolute w-[84%] h-[5%]  left-1/2 bottom-0 bg-white/15  rounded-b-xl  z-10  transform -translate-x-1/2"></div>
+        <div className="absolute w-[87%] h-[5%]  left-1/2 bottom-0 bg-white/10  rounded-b-xl  z-10  transform -translate-x-1/2"></div>
       )}
 
       {step <= 10 && (
         // {/* closer div  nzdik wala*/}
-        <div className="absolute w-[94%] h-[5%]  left-1/2 bottom-[2.5%] bg-white/20 rounded-b-xl  z-30 transform -translate-x-1/2"></div>
+        <div className="absolute w-[94%] h-[5%]  left-1/2 bottom-[2.5%] bg-white/10 rounded-b-xl  z-30 transform -translate-x-1/2"></div>
       )}
     </div>
   );
