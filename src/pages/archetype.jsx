@@ -21,7 +21,6 @@ const Archetype = () => {
       clearTimeout(timer);
     };
   }, []);
-
   return (
     <div
       className={`bg-cream h-svh w-full  flex flex-col gap-y-9 
@@ -48,7 +47,7 @@ const Archetype = () => {
           )}
 
           <SmoothCardCarousel reverse={false}  />
-          <SmoothCardCarousel scrollDirection="down" reverse={true}  />
+          <SmoothCardCarousel scrollDirection="down" reverse={false}  />
           <SmoothCardCarousel reverse={true} />
         </div>
       )}

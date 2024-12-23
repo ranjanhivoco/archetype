@@ -55,6 +55,8 @@ const SmoothCardCarousel = ({ scrollDirection = "up", reverse = "false" }) => {
   }, []);
 
   const displayCards = (arrays) => {
+    console.log(arrays);
+    
     return arrays.map((card, index) => (
       <div
         key={index}
@@ -85,6 +87,8 @@ const SmoothCardCarousel = ({ scrollDirection = "up", reverse = "false" }) => {
       >
         {reverse
           ? displayCards([...cards, ...cards].reverse())
+          : scrollDirection === "down"
+          ? displayCards([...cards, ...cards].sort(() => Math.random() - 0.5))
           : displayCards([...cards, ...cards])}
       </div>
     </div>
