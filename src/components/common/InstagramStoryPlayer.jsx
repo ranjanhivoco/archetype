@@ -62,7 +62,7 @@ const InstagramStoryPlayer = ({
 
     // Handle video end event as a fallback
     const handleVideoEnd = () => {
-     setAnimationNumber &&  setAnimationNumber((prev) => prev + 1);
+      setAnimationNumber && setAnimationNumber((prev) => prev + 1);
       setIsVideoEnded(true);
       setIsPlaying(false);
     };
@@ -169,7 +169,7 @@ const InstagramStoryPlayer = ({
           <LinkButton
             href={""}
             title={"Skip"}
-            className={"h-12 gap-x-2 w-full bg-black bg-opacity-45"}
+            className={"h-12 gap-x-2 w-full !bg-black/45"}
             skip={true}
           />
         </span>

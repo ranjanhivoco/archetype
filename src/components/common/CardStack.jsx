@@ -35,16 +35,18 @@ const CardSwiper = ({ step, setStep }) => {
     step !== 11 && triggerSwipe("left", index); // if eleven then its the last card
   };
 
-  const [state, setState] = useState(0);
-
   return (
-    <div onClick={(e) => e.stopPropagation()} className="w-full h-full overflow-hidden ">
-      <div className="w-full h-full ">
+    //this div  takes the rest of the page
+    <div
+      // onClick={(e) => e.stopPropagation()}
+      className="w-full h-full overflow-hidden "
+    >
+      <div className="w-full h-full  ">
+        {/* this div  takes the rest of the page */}
         {questions.map((question, index) => (
           <TinderCard
             ref={childRefs[index]}
-            // ${step===index+1 ?"":"hidden"}
-            className={` absolute  w-full h-3/5 swipe  overflow-hidden `}
+            className={` absolute w-full h-3/5 swipe overflow-hidden z-0 `} // this abolute keeps them stacked
             swipeRequirementType="position"
             swipeThreshold={1000}
             // onCardLeftScreen={() => setStep( step + 1)}
@@ -55,8 +57,9 @@ const CardSwiper = ({ step, setStep }) => {
             // preventSwipe={["left", "right", "up", "down"]} // Prevent all user swipes
           >
             <div
-              style={{ zIndex: initialQuestions.length - index }}
-              className="relative h-full w-full px-7 rounded-xl overflow-hidden transform  transition-transform duration-0"
+              //  first question will be on top brother
+              // style={{ zIndex: initialQuestions.length - index }}
+              className="h-full w-full px-7 rounded-xl overflow-hidden "
             >
               <QuizComponent
                 step={step}

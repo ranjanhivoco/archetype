@@ -28,13 +28,14 @@ export default function Home() {
         className={` transition-all duration-700 ease-in-out  
         ${
           isAnimationStarted
-            ? "transform translate-y-0 opacity-100"
-            : "transform translate-y-[30vh] opacity-80 scale-90"
+            ? "transform translate-y-0 scale-90"
+            : "transform translate-y-[30vh]  "
         }`}
         src={"/images/logo.png"}
         width={268}
         height={76}
         priority={true}
+        quality={100}
         alt="of experience logo"
       />
 
