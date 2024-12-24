@@ -1,8 +1,21 @@
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 
-const SmoothCardCarousel = ({ scrollDirection = "up", reverse = "false" }) => {
+
+
+const SmoothCardCarousel = ({ scrollDirection = "up", reverse = false }) => {
+  const containerRef = useRef(null);
+  const cardRef = useRef(null);
+  const [cardHeight, setCardHeight] = useState(0);  
+
+  useEffect(() => {
+    if (cardRef.current) {
+      setCardHeight(cardRef.current.offsetHeight +8);
+    }
+  }, []);
+
   
+
   const cards = [
     { archtypeSrc: "/images/archtypes/The_Artist_2.png" },
     { archtypeSrc: "/images/archtypes/The_Harmoniser_2.png" },
@@ -16,17 +29,15 @@ const SmoothCardCarousel = ({ scrollDirection = "up", reverse = "false" }) => {
     { archtypeSrc: "/images/archtypes/The_Maverick_2.png" },
   ];
 
-  const containerRef = useRef(null);
-
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     let animationFrameId;
     let startTime;
-    const cardHeight = 188; // Pixels (matching h-64)
-    const gap = 16; // Gap between cards in px
-    const totalCardHeight = cardHeight * 10 + gap * 10;
+    const gap = 16;
+    const totalCardHeight = cardHeight * cards.length + gap * cards.length;
+
     const scrollSpeed = 0.1; // Pixels per millisecond
 
     const animate = (currentTime) => {
@@ -52,28 +63,27 @@ const SmoothCardCarousel = ({ scrollDirection = "up", reverse = "false" }) => {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, []);
+  }, [cardHeight]);
 
   const displayCards = (arrays) => {
-    console.log(arrays);
-    
     return arrays.map((card, index) => (
       <div
+        ref={cardRef}
         key={index}
         className={`absolute w-full`}
         style={{
           top: `${
-            scrollDirection === "up" ? `${index * 300}px` : `-${index * 300}px`
+            scrollDirection === "up" ? `${index * cardHeight}px` : `-${index * cardHeight}px`
           }`,
           left: "0",
         }}
       >
         <Image
-          className="w-full h-auto "
-          priority={true}
-          src={card.archtypeSrc}
+          className="w-full h-auto object-cover"
+          priority={index < 5}
           width={110}
           height={100}
+          src={card.archtypeSrc}
           alt="Archetype image"
         />
       </div>
@@ -88,7 +98,7 @@ const SmoothCardCarousel = ({ scrollDirection = "up", reverse = "false" }) => {
         {reverse
           ? displayCards([...cards, ...cards].reverse())
           : scrollDirection === "down"
-          ? displayCards([...cards, ...cards].sort(() => Math.random() - 0.5))
+          ? displayCards([...cards, ...cards].sort(() => Math.random() - 0.5))  // warning is thrown due to math.random
           : displayCards([...cards, ...cards])}
       </div>
     </div>

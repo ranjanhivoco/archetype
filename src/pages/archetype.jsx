@@ -8,12 +8,11 @@ import { useEffect, useState } from "react";
 
 const Archetype = () => {
   const [animationNumber, setAnimationNumber] = useState(1);
-  console.log(animationNumber, "animationNumber");
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimationNumber(
-        animationNumber < 3 ? animationNumber + 1 : animationNumber
+        animationNumber < 3 ? animationNumber  : animationNumber
       );
     }, 4000);
 

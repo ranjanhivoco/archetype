@@ -1,7 +1,6 @@
-// import Lottie from "lottie-react";
 import animation from "@/assets/animation.json";
-import dynamic from 'next/dynamic';
-const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const LottieAnimation = () => {
   return (
