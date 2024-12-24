@@ -16,9 +16,9 @@ const Quiz = () => {
     if (step !== 12) return;
       const timer = setTimeout(() => {
         if (step === 12) {
-          // router.push("/result");
+          router.push("/result");
         }
-      }, 2000);
+      }, 1000);
     return () => {
       clearTimeout(timer);
     };
