@@ -48,7 +48,8 @@ const Result = () => {
       </div>
 
       {/* main content */}
-      <div className="relative flex-1  mb-44 w-full  flex border border-black ">
+      <div className="relative flex-1  mb-44 w-full  flex">
+        
         {/* contents div non Gradient part */}
         <div className="flex z-10 w-[90vw] mx-auto h-[70%] relative">
           {/* left side text and image */}
@@ -141,10 +142,11 @@ const Result = () => {
             the forefront
           </p>
         </div>
+
       </div>
 
       {/* bottom h2 and routing btn */}
-      <div className="absolute z-0 flex-1 bottom-9 left-0 px-5 w-full flex flex-col gap-y-10">
+      <div className=" absolute z-0 flex-1 bottom-9 left-0 px-5 w-full flex flex-col gap-y-10">
         <h2
           className={`text-lg   font-bold text-left
           transition-opacity duration-1000
