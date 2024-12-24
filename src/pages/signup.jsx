@@ -38,11 +38,21 @@ function Signup() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
+              name="name"
+              // autoComplete="name" 
+              // doesnt work in mobile simulation in chrome
               required
               minLength="2"
               maxLength={15}
               placeholder="Name"
-              className="w-full text-base text-left bg-transparent p-3 mb-5 rounded-md border border-off-white outline-none "
+              className="w-full text-base text-white text-left bg-transparent p-3 mb-5 rounded-md border border-off-white outline-none  placeholder:text-white autofill:!bg-transparent
+              [&:-webkit-autofill]:bg-transparent
+              [&:-webkit-autofill:hover]:bg-transparent
+              [&:-webkit-autofill:focus]:bg-transparent
+              [&:-webkit-autofill:active]:bg-transparent
+              [&:-webkit-autofill]:[transition-delay:9999s]
+              [&:-webkit-autofill]:[-webkit-text-fill-color:inherit]              
+              "
             />
 
             <input
@@ -50,9 +60,18 @@ function Signup() {
               onChange={(e) => setEmail(e.target.value)}
               pattern=".+@example\.com"
               type="email"
+              name="email"
+              autoComplete="email"
               placeholder="Email Id"
               required
-              className="w-full text-base text-left bg-transparent p-3  rounded-md border border-off-white outline-none "
+              className="w-full text-base text-white text-left bg-transparent p-3  rounded-md border border-off-white outline-none placeholder:text-white
+              [&:-webkit-autofill]:bg-transparent
+              [&:-webkit-autofill:hover]:bg-transparent
+              [&:-webkit-autofill:focus]:bg-transparent
+              [&:-webkit-autofill:active]:bg-transparent
+              [&:-webkit-autofill]:[transition-delay:9999s]
+              [&:-webkit-autofill]:[-webkit-text-fill-color:inherit]
+              "
             />
           </div>
 

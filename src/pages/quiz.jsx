@@ -16,7 +16,7 @@ const Quiz = () => {
     if (step !== 12) return;
       const timer = setTimeout(() => {
         if (step === 12) {
-          router.push("/result");
+          // router.push("/result");
         }
       }, 2000);
     return () => {
@@ -31,7 +31,7 @@ const Quiz = () => {
         <section className="flex flex-col gap-y-10 w-full  px-7  ">
           <div className=" flex  w-full justify-center items-center text-white relative ">
             <Link className="absolute left-0" href={"/archetype"}>
-              <ArrowLeft  size={24} />
+              <ArrowLeft size={24} />
             </Link>
 
             <p className=" text-base font-bold text-left self-center ">
@@ -58,7 +58,7 @@ const Quiz = () => {
 
       {/* Overlay and Blur effect when quiz ends  */}
       {step === 12 && (
-        <div className="absolute inset-0 bg-black/60 z-50 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-black/60 z-40 backdrop-blur-sm"></div>
       )}
 
       {/* lottie animation over the blur  when quiz ends z 50 */}
