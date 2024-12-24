@@ -50,7 +50,7 @@ const Result = () => {
       {/* main content */}
       <div className="relative flex-1  mb-44 w-full  flex justify-center">
         {/* contents div non Gradient part */}
-        <div className="flex z-10 w-full mx-auto h-[70%] relative">
+        <div className="flex z-10 w-full mx-auto h-[70%] relative px-2">
           {/* left side text and image */}
           <div
             className={`w-1/2 h-full flex flex-1 transition-transform duration-1000
