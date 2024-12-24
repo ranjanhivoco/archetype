@@ -1,6 +1,17 @@
 import { useCallback, useState } from "react";
 
-const QuizComponent = ({ step, ques, onClick, onTouchEnd }) => {
+const QuizComponent = ({
+  step,
+  setStep,
+  ques,
+  onClick,
+  onTouchEnd,
+  result,
+  setResult,
+}) => {
+
+  console.log(result);
+  
   const handleAction = (fn, index) => {
     setTimeout(() => {
       fn();
@@ -16,7 +27,7 @@ const QuizComponent = ({ step, ques, onClick, onTouchEnd }) => {
         className={`overflow-hidden flex flex-col gap-y-8  h-[95%] w-full bg-milk-white rounded-xl text-black-coffee px-5 pt-9 pb-6`}
       >
         <h1 className=" text-sm font-semibold  text-left ">
-          Q{step}. {ques.question}
+          Q{step}. {ques.questionText}
         </h1>
 
         <ul aria-labelledby="question" className="flex flex-col flex-1 gap-y-2">
@@ -31,6 +42,15 @@ const QuizComponent = ({ step, ques, onClick, onTouchEnd }) => {
                     // e.preventDefault()
                   }}
                   onTouchEnd={(e) => {
+                    setStep(step + 1);
+                    setResult([
+                      ...result,
+                      {
+                        question_id: ques._id,
+                        question: ques.questionText,
+                        answer: option.text,
+                      },
+                    ]);
                     handleAction(onTouchEnd, index);
                     // e.preventDefault()
                   }}
@@ -41,7 +61,7 @@ const QuizComponent = ({ step, ques, onClick, onTouchEnd }) => {
                       : "border-black/25"
                   }`}
                 >
-                  {option}
+                  {option.text}
                 </button>
               </li>
             );
@@ -50,7 +70,6 @@ const QuizComponent = ({ step, ques, onClick, onTouchEnd }) => {
       </div>
 
       {/* fake next 2 cards below */}
-
 
       {step <= 9 && (
         // {/* farther div  piche wala*/}

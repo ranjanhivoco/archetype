@@ -12,7 +12,7 @@ const Archetype = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimationNumber(
-        animationNumber < 3 ? animationNumber  : animationNumber
+        animationNumber < 3 ? animationNumber + 1 : animationNumber
       );
     }, 4000);
 
