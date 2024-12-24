@@ -53,7 +53,7 @@ const Result = () => {
         <div className="flex z-10 w-full mx-auto h-[70%] relative">
           {/* left side text and image */}
           <div
-            className={`pl-2 w-full h-full flex flex-1  transition-transform duration-1000
+            className={`w-1/2 h-full flex flex-1 transition-transform duration-1000
             ${animationCounter >= 1 ? "translate-x-0" : "-translate-x-52"}
           `}
           >
@@ -62,7 +62,7 @@ const Result = () => {
                 transform: "rotate(180deg)",
                 writingMode: "vertical-rl",
               }}
-              className="font-Edo  h-1/2 self-end text-right text-xl font-normal uppercase text-white"
+              className="font-Edo h-1/2 self-end text-right text-xl font-normal uppercase text-white"
             >
               EXPLORER
             </p>
@@ -73,15 +73,15 @@ const Result = () => {
               src={`
                 https://s3-alpha-sig.figma.com/img/cc67/3930/4a1cfbd86ee2a31801a50fe8f00ccd1d?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MuV0qNv5AtdCAUFj-kVyMkck5vFzI1NKOG4JpF7Es-SVC4Sjjh5BbYN5iLrGTjU~NWQc6p10VzlH9zB8fdrl7pgbUa-iTX4H~7Mmc88HrjKbdwIn-12IfV~Rex5y-m0QM~5kvu5IDca7R930R1PlvUQcZdgjb6biTThWYZcGYi9nAX8kHGQyld99-q1TFBV4Xy3KgrgQ5RoFF~3WCKqazy6DSXGGkip4ePyIE9mUW8kPJCkBF3IN9q-RtP8Q6DvgBSAv4Hrae2FU0L97SoPKt2xmKfnu4nIKeOC5O35dcZ2Ut9TE~ceG3vWynuUKsRNvc5-d~iVxhgWUpOdPtbn7wg__
                 `}
-              className="h-full w-full object-cover overflow-visible "
+              className="h-full w-full object-contain overflow-hidden"
               alt="Image"
             />
           </div>
 
           {/* continue logo */}
           <Image
-            className="self-center mt-28 "
-            // -mr-5 
+            className="absolute  self-center mt-28 left-1/2 transform -translate-x-1/2"
+            // -mr-5
             width={66}
             height={67}
             src={"/images/icons/blend-icon.png"}
@@ -90,7 +90,7 @@ const Result = () => {
 
           {/* right side div and image */}
           <div
-            className={`mr-5 w-full h-full flex flex-1   transition-transform duration-1000 
+            className={`w-1/2  h-full flex flex-1 transition-transform duration-1000 
                        ${
                          animationCounter >= 2
                            ? "translate-x-0"
@@ -105,7 +105,7 @@ const Result = () => {
                 https://s3-alpha-sig.figma.com/img/dd46/d539/0f89514a6f57d5aee2c9a3ed5827589b?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MKRa3uFjRaPUBmLFfm0AHjPoaP-GI3Td2ewoKQx3W-Bj4PBfdrvOylxMhZi-6zwXhnpcQI5ZmBpr5Fk~Qjehw1cnqKriTkzY2pgnwrggOI6mAU1AJ7JuPZdcRp1iK84V17idmnkPYUU5kias-W9ZDZO2U5Rn2GkEcJ4sUx-dmYH7ug0LmFq37yZ7tgBVrwna5L-0H0TK6VlpKjKZNt~id~C6zeR-iJTvPeeetEEJ0Ny6Upe3k0acnvQ99BeErxIrQN0qzwrWxSQUJYIILDBYMrgaepgQAqrUHlXM-lF926w-6q67bL2JCp3Mc1KA19BnJCXdWICB4t6LCzyGF372EQ__
                 `}
               // className="h-full w-auto"
-              className="h-full w-full object-cover overflow-visible "
+              className="h-full w-full object-contain overflow-hidden"
               alt="Image"
             />
 
@@ -113,7 +113,7 @@ const Result = () => {
               style={{
                 writingMode: "vertical-rl",
               }}
-              className="font-Edo text-xl h-1/2 self-end text-left font-normal uppercase text-white -ml-3"
+              className="font-Edo  text-xl h-1/2 self-end text-left font-normal uppercase text-white"
             >
               EXPLORER
             </p>
