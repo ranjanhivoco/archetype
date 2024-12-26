@@ -14,19 +14,17 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
     }
   }, []);
 
-  
-
   const cards = [
-    { archtypeSrc: "/images/archtypes/The_Artist_2.png" },
-    { archtypeSrc: "/images/archtypes/The_Harmoniser_2.png" },
-    { archtypeSrc: "/images/archtypes/The_Sage_2.png" },
-    { archtypeSrc: "/images/archtypes/The_Ruler_2.png" },
-    { archtypeSrc: "/images/archtypes/The_Protagonist_2.png" },
-    { archtypeSrc: "/images/archtypes/The_Visionary_2.png" },
-    { archtypeSrc: "/images/archtypes/The_Strategist_2.png" },
-    { archtypeSrc: "/images/archtypes/The_Explorer_2.png" },
-    { archtypeSrc: "/images/archtypes/The_Indomitable_Spirit_2.png" },
-    { archtypeSrc: "/images/archtypes/The_Maverick_2.png" },
+    { archtypeSrc: "/images/archtypes/Artist.png" },
+    { archtypeSrc: "/images/archtypes/Harmoniser.png" },
+    { archtypeSrc: "/images/archtypes/Sage.png" },
+    { archtypeSrc: "/images/archtypes/Ruler.png" },
+    { archtypeSrc: "/images/archtypes/Protagonist.png" },
+    { archtypeSrc: "/images/archtypes/Visionary.png" },
+    { archtypeSrc: "/images/archtypes/Strategist.png" },
+    { archtypeSrc: "/images/archtypes/Explorer.png" },
+    { archtypeSrc: "/images/archtypes/Indomitable-spirit.png" },
+    { archtypeSrc: "/images/archtypes/Maverick.png" },
   ];
 
   useEffect(() => {
@@ -36,7 +34,7 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
     let animationFrameId;
     let startTime;
     const totalCardHeight = cardHeight * cards.length; 
-    const scrollSpeed = 0.1; // Pixels per millisecond
+    const scrollSpeed = 0.1 // Pixels per millisecond
 
     const animate = (currentTime) => {
       if (!startTime) startTime = currentTime;
@@ -77,7 +75,7 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
         }}
       >
         <Image
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-contain bg-transparent"
           priority={true}
           width={110}
           height={100}
