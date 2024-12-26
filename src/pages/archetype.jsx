@@ -40,7 +40,7 @@ const Archetype = () => {
       {/* <CareerArchetype /> */}
 
       {animationNumber !== 2 && (
-        <div className="relative w-full flex-1  overflow-hidden flex items-center justify-center gap-x-4 px-5">
+        <div className="relative w-full flex-1 min-h-[80%]  overflow-hidden flex items-center justify-center gap-x-4 px-5">
           {animationNumber === 3 && (
             <div className="absolute inset-0 bg-cream/60 z-10"></div>
           )}
