@@ -94,9 +94,6 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
         prevQuestions.filter((_, idx) => idx !== index)
       );
       setCurrentIndex((prev) => prev - 1); // Update current index
-
-      setStep(step + 1);
-
     }
   };
 
@@ -124,6 +121,7 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
             onSwipe={() => {
               return false;
             }}
+            // onCardLeftScreen={() => setStep(step + 1)}
             // preventSwipe={["left", "right", "up", "down"]} // Prevent all user swipes
           >
             <div

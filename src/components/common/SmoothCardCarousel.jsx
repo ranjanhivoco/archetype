@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef } from "react";
 const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
   const containerRef = useRef(null);
   const cardRef = useRef(null);
-  const [cardHeight, setCardHeight] = useState(0);  
+  const [cardHeight, setCardHeight] = useState(0);//232  
 
   console.log(cardHeight,'cardHeight');
   
@@ -34,7 +34,7 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    if (!cardRef.current) return;
+    if (!cardRef.current) return;// can be commented 
 
     let animationFrameId;
     let startTime;

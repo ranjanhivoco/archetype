@@ -20,6 +20,7 @@ const Archetype = () => {
       clearTimeout(timer);
     };
   }, []);
+  
   return (
     <div
       className={`bg-cream h-svh w-full  flex flex-col gap-y-9 

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const QuizComponent = ({
   step,
@@ -9,13 +9,21 @@ const QuizComponent = ({
   result,
   setResult,
 }) => {
-
+  
   console.log(result);
   
+
+  
+  useEffect(() => {
+    result.length > 0 ? setStep(step + 1) : "";
+    console.log(result.length);
+    
+  }, [result.length]);
+
   const handleAction = (fn, index) => {
     setTimeout(() => {
-      fn();
-    }, 500);
+      fn(index);
+    }, 100);
   };
 
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
@@ -41,7 +49,7 @@ const QuizComponent = ({
                     // handleAction(onClick, index);
                     // e.preventDefault()
                   }}
-                  onTouchEnd={(e) => {
+                  onTouchEnd={() => {
                     setResult((prev) => {
                       return [
                         ...prev.filter((item) => item.question_id !== ques._id),
