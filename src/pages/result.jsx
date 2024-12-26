@@ -76,7 +76,9 @@ const Result = () => {
               }}
               className="font-Edo h-1/2 self-end text-right text-xl font-normal uppercase text-white whitespace-nowrap	"
             >
-              {object[0]?.title || "explorer"}
+              {object[0]?.title.replace(/\bthe\b/g, '') || "explorer"}
+          
+
             </p>
 
             <img
@@ -134,7 +136,7 @@ const Result = () => {
               }}
               className="font-Edo  text-xl h-1/2 self-end text-left font-normal uppercase text-white whitespace-nowrap	"
             >
-              {object[1]?.title || "explorer"}
+              {object[1]?.title.replace(/\bthe\b/g, '') || "explorer"}
             </p>
           </div>
         </div>
