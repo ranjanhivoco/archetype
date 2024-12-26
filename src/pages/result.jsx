@@ -38,7 +38,7 @@ const Result = () => {
   }, []);
 
   return (
-    <div className="bg-off-white text-black h-svh px-[5%] w-full pt-[11%] flex flex-col gap-y-3 overflow-hidden">
+    <div className="bg-off-white text-black h-svh px-6 w-full pt-10 flex flex-col gap-y-3 overflow-hidden">
       {/* back btn  and the h2  */}
       {/* use  later on */}
 
@@ -61,10 +61,12 @@ const Result = () => {
       </div>
 
       {/* main content */}
+      <div className="relative min-h-[50vh]  flex-1 mb-[60%] w-full  flex justify-center">
 
-      <div className="relative flex-1  mb-[11.25rem] w-full  flex justify-center">
+      {/* <div className="relative min-h-[50vh]  flex-1  border border-black mb-[60%] w-full  flex justify-center"> */}
+      {/* <div className="relative flex-1  mb-[60%] w-full  flex justify-center"> */}
         {/* contents div non Gradient part */}
-        <div className="flex z-10 w-full mx-auto h-[71.5%] relative px-3">
+        <div className="flex z-10 w-full mx-auto h-[72.5%] relative px-3">
           {/* left side text and image */}
           <div
             className={`w-1/2 h-full flex flex-1 transition-transform duration-1000
@@ -115,7 +117,10 @@ const Result = () => {
               className="h-full w-full object-contain overflow-hidden "
               width={117}
               height={255}
-              src={object[1]?.image || ""}
+              src={
+                object[1]?.image ||
+                "https://s3-alpha-sig.figma.com/img/cc67/3930/4a1cfbd86ee2a31801a50fe8f00ccd1d?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MuV0qNv5AtdCAUFj-kVyMkck5vFzI1NKOG4JpF7Es-SVC4Sjjh5BbYN5iLrGTjU~NWQc6p10VzlH9zB8fdrl7pgbUa-iTX4H~7Mmc88HrjKbdwIn-12IfV~Rex5y-m0QM~5kvu5IDca7R930R1PlvUQcZdgjb6biTThWYZcGYi9nAX8kHGQyld99-q1TFBV4Xy3KgrgQ5RoFF~3WCKqazy6DSXGGkip4ePyIE9mUW8kPJCkBF3IN9q-RtP8Q6DvgBSAv4Hrae2FU0L97SoPKt2xmKfnu4nIKeOC5O35dcZ2Ut9TE~ceG3vWynuUKsRNvc5-d~iVxhgWUpOdPtbn7wg__"
+              }
               alt="right archetype image"
               priority={true}
             />
@@ -133,7 +138,7 @@ const Result = () => {
 
         {/* gradient wala div  */}
         <div
-          className={`z-0 absolute w-full flex -translate-x-1/2    h-[71.5%] bottom-4 left-1/2 rounded-3xl transition-opacity ${firstAnimationClass}`}
+          className={`z-0 absolute w-full flex -translate-x-1/2    h-[71%] bottom-0 left-1/2 rounded-3xl transition-opacity ${firstAnimationClass}`}
           style={{
             transitionDuration: "1s", // Adjust the duration here
             background:
@@ -145,8 +150,7 @@ const Result = () => {
           }}
         >
           <p
-            className={`absolute w-full   bottom-0 font-medium   text-sm text-white  px-5 my-5 
-          
+            className={`absolute w-full   bottom-0 font-medium   text-sm text-white  px-4 pt-4 pb-5
           transition-transform duration-1000
           ${animationCounter >= 3 ? "translate-y-0" : "translate-y-[130%]"}
           `}
@@ -155,6 +159,7 @@ const Result = () => {
             prepared approach your career, while keeping passion curiosity in
             the forefront
           </p>
+
         </div>
       </div>
 
