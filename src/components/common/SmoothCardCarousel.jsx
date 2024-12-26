@@ -8,11 +8,15 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
   const cardRef = useRef(null);
   const [cardHeight, setCardHeight] = useState(0);  
 
+  console.log(cardHeight);
+  
+
   useEffect(() => {
     if (cardRef.current) {
-      setCardHeight(cardRef.current.offsetHeight +8);
+      console.log('setting h');
+      setCardHeight(cardRef.current.offsetHeight + 8);
     }
-  }, []);
+  });
 
   const cards = [
     { archtypeSrc: "/images/archtypes/Artist.png" },
@@ -30,10 +34,13 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    if (!cardRef.current) return;
 
     let animationFrameId;
     let startTime;
-    const totalCardHeight = cardHeight * cards.length; 
+    // const gap=10
+    const totalCardHeight =
+      cardHeight * cards.length + cardHeight * cards.length; 
     const scrollSpeed = 0.1 // Pixels per millisecond
 
     const animate = (currentTime) => {
@@ -69,13 +76,15 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
         className={`absolute w-full`}
         style={{
           top: `${
-            scrollDirection === "up" ? `${index * cardHeight}px` : `-${index * cardHeight}px`
+            scrollDirection === "up"
+              ? `${index * cardHeight}px`
+              : `-${index * cardHeight}px`
           }`,
           left: "0",
         }}
       >
         <Image
-          className="w-full h-auto object-contain bg-transparent"
+          className="w-full h-auto object-cover"
           priority={true}
           width={110}
           height={100}
@@ -94,7 +103,7 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
         {reverse
           ? displayCards([...cards, ...cards].reverse())
           : scrollDirection === "down"
-          ? displayCards([...cards, ...cards].sort(() => Math.random() - 0.5))  // warning is thrown due to math.random
+          ? displayCards([...cards, ...cards].sort(() => Math.random() - 0.5)) // warning is thrown due to math.random
           : displayCards([...cards, ...cards])}
       </div>
     </div>
