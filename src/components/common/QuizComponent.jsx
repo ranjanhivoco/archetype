@@ -23,7 +23,7 @@ const QuizComponent = ({
   const handleAction = (fn, index) => {
     setTimeout(() => {
       fn(index);
-    }, 100);
+    }, 500);
   };
 
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
