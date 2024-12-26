@@ -10,7 +10,7 @@ const Result = () => {
 
   const router = useRouter();
   const { data } = router.query;
-  const object = data ? JSON.parse(decodeURIComponent(data)) : [];
+  const object = data ? JSON.parse(decodeURIComponent(data)) : [];  
 
   useEffect(() => {
     if (data?.length<=0) {
@@ -41,6 +41,8 @@ const Result = () => {
     <div className="bg-off-white text-black h-svh px-[5%] w-full pt-[11%] flex flex-col gap-y-3 overflow-hidden">
       {/* back btn  and the h2  */}
       {/* use  later on */}
+
+
       <div className="flex flex-col gap-y-8 ">
         <div className="flex gap-x-2 items-center">
           <Link href={"/quiz"}>
@@ -85,10 +87,11 @@ const Result = () => {
               width={117}
               height={255}
               src={
-                // object[0]?.image ||
-                `
-                https://s3-alpha-sig.figma.com/img/cc67/3930/4a1cfbd86ee2a31801a50fe8f00ccd1d?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MuV0qNv5AtdCAUFj-kVyMkck5vFzI1NKOG4JpF7Es-SVC4Sjjh5BbYN5iLrGTjU~NWQc6p10VzlH9zB8fdrl7pgbUa-iTX4H~7Mmc88HrjKbdwIn-12IfV~Rex5y-m0QM~5kvu5IDca7R930R1PlvUQcZdgjb6biTThWYZcGYi9nAX8kHGQyld99-q1TFBV4Xy3KgrgQ5RoFF~3WCKqazy6DSXGGkip4ePyIE9mUW8kPJCkBF3IN9q-RtP8Q6DvgBSAv4Hrae2FU0L97SoPKt2xmKfnu4nIKeOC5O35dcZ2Ut9TE~ceG3vWynuUKsRNvc5-d~iVxhgWUpOdPtbn7wg__
-                `
+                object[0]?.image 
+                // ||
+                // `
+                // https://s3-alpha-sig.figma.com/img/cc67/3930/4a1cfbd86ee2a31801a50fe8f00ccd1d?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MuV0qNv5AtdCAUFj-kVyMkck5vFzI1NKOG4JpF7Es-SVC4Sjjh5BbYN5iLrGTjU~NWQc6p10VzlH9zB8fdrl7pgbUa-iTX4H~7Mmc88HrjKbdwIn-12IfV~Rex5y-m0QM~5kvu5IDca7R930R1PlvUQcZdgjb6biTThWYZcGYi9nAX8kHGQyld99-q1TFBV4Xy3KgrgQ5RoFF~3WCKqazy6DSXGGkip4ePyIE9mUW8kPJCkBF3IN9q-RtP8Q6DvgBSAv4Hrae2FU0L97SoPKt2xmKfnu4nIKeOC5O35dcZ2Ut9TE~ceG3vWynuUKsRNvc5-d~iVxhgWUpOdPtbn7wg__
+                // `
               }
               className="h-full w-full object-contain overflow-hidden bg-blend-color"
               alt="Image"
@@ -119,11 +122,12 @@ const Result = () => {
               width={117}
               height={255}
               src={
-                // object[1]?.image ||
+                object[1]?.image
+                //  ||
 
-                `
-                https://s3-alpha-sig.figma.com/img/dd46/d539/0f89514a6f57d5aee2c9a3ed5827589b?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MKRa3uFjRaPUBmLFfm0AHjPoaP-GI3Td2ewoKQx3W-Bj4PBfdrvOylxMhZi-6zwXhnpcQI5ZmBpr5Fk~Qjehw1cnqKriTkzY2pgnwrggOI6mAU1AJ7JuPZdcRp1iK84V17idmnkPYUU5kias-W9ZDZO2U5Rn2GkEcJ4sUx-dmYH7ug0LmFq37yZ7tgBVrwna5L-0H0TK6VlpKjKZNt~id~C6zeR-iJTvPeeetEEJ0Ny6Upe3k0acnvQ99BeErxIrQN0qzwrWxSQUJYIILDBYMrgaepgQAqrUHlXM-lF926w-6q67bL2JCp3Mc1KA19BnJCXdWICB4t6LCzyGF372EQ__
-                `
+                // `
+                // https://s3-alpha-sig.figma.com/img/dd46/d539/0f89514a6f57d5aee2c9a3ed5827589b?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MKRa3uFjRaPUBmLFfm0AHjPoaP-GI3Td2ewoKQx3W-Bj4PBfdrvOylxMhZi-6zwXhnpcQI5ZmBpr5Fk~Qjehw1cnqKriTkzY2pgnwrggOI6mAU1AJ7JuPZdcRp1iK84V17idmnkPYUU5kias-W9ZDZO2U5Rn2GkEcJ4sUx-dmYH7ug0LmFq37yZ7tgBVrwna5L-0H0TK6VlpKjKZNt~id~C6zeR-iJTvPeeetEEJ0Ny6Upe3k0acnvQ99BeErxIrQN0qzwrWxSQUJYIILDBYMrgaepgQAqrUHlXM-lF926w-6q67bL2JCp3Mc1KA19BnJCXdWICB4t6LCzyGF372EQ__
+                // `
               }
               // className="h-full w-auto"
               className="h-full w-full object-contain overflow-hidden"
@@ -143,7 +147,7 @@ const Result = () => {
 
         {/* gradient wala div  */}
         <div
-          className={`z-0 absolute w-full flex -translate-x-1/2    h-[70%] bottom-2 left-1/2 rounded-3xl transition-opacity ${firstAnimationClass}`}
+          className={`z-0 absolute w-full flex -translate-x-1/2    h-[70%] bottom-4 left-1/2 rounded-3xl transition-opacity ${firstAnimationClass}`}
           style={{
             transitionDuration: "1s", // Adjust the duration here
             background:
