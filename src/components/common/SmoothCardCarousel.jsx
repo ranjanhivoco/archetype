@@ -86,8 +86,8 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
         <Image
           className="w-full h-auto object-cover"
           priority={true}
-          width={110}
-          height={100}
+          width={101}
+          height={224}
           src={card.archtypeSrc}
           alt="Archetype image"
         />
