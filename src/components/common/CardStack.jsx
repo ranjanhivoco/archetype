@@ -6,19 +6,16 @@ import TinderCard from "react-tinder-card";
 import initialQuestions from "../../assets/questions";
 import { useRouter } from "next/router";
 
-
-const CardSwiper = ({ step,setStep,setIsLoading }) => {
+const CardSwiper = ({ step, setStep, setIsLoading }) => {
   const [questions, setQuestions] = useState(null);
-  const [result,setResult] =useState([])  
+  const [result, setResult] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(initialQuestions.length - 1);
   // const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);    
+  const [error, setError] = useState(null);
   const router = useRouter();
-  
-  
 
-  const URL='https://backend.hivoco.com/quiz/questions'
+  const URL = "https://backend.hivoco.com/quiz/questions";
   const fetchData = async () => {
     try {
       const response = await fetch(URL);
@@ -34,9 +31,9 @@ const CardSwiper = ({ step,setStep,setIsLoading }) => {
     }
   };
 
-  async function postData( data) {
+  async function postData(data) {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
       const response = await fetch(
         "https://backend.hivoco.com/quiz/calculate-result",
         {
@@ -47,27 +44,26 @@ const CardSwiper = ({ step,setStep,setIsLoading }) => {
           body: JSON.stringify(data),
         }
       );
-  
+
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
-  
+
       const result = await response.json();
-      
-      setIsLoading(false)
+
+      setIsLoading(false);
 
       result &&
         router.push({
           pathname: "/result",
-          query: { data: encodeURIComponent( JSON.stringify(result.archedata)) },
+          query: { data: encodeURIComponent(JSON.stringify(result.archedata)) },
         });
-  
 
-      console.log('Success:', result);
+      console.log("Success:", result);
       return result;
     } catch (error) {
-      console.error('Error:', error);
-      setIsLoading(false)
+      console.error("Error:", error);
+      setIsLoading(false);
     }
   }
 
@@ -80,7 +76,7 @@ const CardSwiper = ({ step,setStep,setIsLoading }) => {
       postData(result);
     }
   }, [result]);
-  
+
   const childRefs = useMemo(
     () =>
       Array(initialQuestions.length)
@@ -98,12 +94,14 @@ const CardSwiper = ({ step,setStep,setIsLoading }) => {
         prevQuestions.filter((_, idx) => idx !== index)
       );
       setCurrentIndex((prev) => prev - 1); // Update current index
+
+      setStep(step + 1);
+
     }
   };
 
   // swipe left logic for both touch and click
   const handleOptionClick = (index) => {
-    // setStep(step + 1);
     step !== 11 && triggerSwipe("left", index); // if eleven then its the last card
   };
 
@@ -118,7 +116,7 @@ const CardSwiper = ({ step,setStep,setIsLoading }) => {
         {questions?.map((question, index) => (
           <TinderCard
             ref={childRefs[index]}
-            className={` absolute w-full h-3/5 swipe overflow-hidden z-0  `} // this abolute keeps them stacked
+            className={`absolute w-full h-3/5 swipe overflow-hidden z-0`} // this abolute keeps them stacked
             swipeRequirementType="position"
             swipeThreshold={1000}
             // onCardLeftScreen={() => setStep( step + 1)}

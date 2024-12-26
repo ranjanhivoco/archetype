@@ -10,23 +10,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 const Quiz = () => {
-  const [step, setStep] = useState(1); 
+  const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-
-  // Current step (starts at 0)
-  // const router =useRouter()
-  // useEffect(() => {
-  //   if (step !== 12) return;
-  //     const timer = setTimeout(() => {
-  //       if (step === 12) {
-  //         router.push("/result");
-  //       }
-  //     }, 1000);
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [step,router]);
-
   return (
     <div className="h-svh bg-dark-brown relative pt-14 w-full flex flex-col overflow-hidden">
       {/* main quiz ui */}

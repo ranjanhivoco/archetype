@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 
 
-const SmoothCardCarousel = ({ scrollDirection = "up", reverse = false }) => {
+const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
   const containerRef = useRef(null);
   const cardRef = useRef(null);
   const [cardHeight, setCardHeight] = useState(0);  
@@ -35,9 +35,7 @@ const SmoothCardCarousel = ({ scrollDirection = "up", reverse = false }) => {
 
     let animationFrameId;
     let startTime;
-    const gap = 16;
-    const totalCardHeight = cardHeight * cards.length + gap * cards.length;
-
+    const totalCardHeight = cardHeight * cards.length; 
     const scrollSpeed = 0.1; // Pixels per millisecond
 
     const animate = (currentTime) => {
@@ -80,7 +78,7 @@ const SmoothCardCarousel = ({ scrollDirection = "up", reverse = false }) => {
       >
         <Image
           className="w-full h-auto object-cover"
-          priority={index < 5}
+          priority={true}
           width={110}
           height={100}
           src={card.archtypeSrc}

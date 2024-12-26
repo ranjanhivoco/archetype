@@ -9,17 +9,17 @@ import { useEffect, useState } from "react";
 const Archetype = () => {
   const [animationNumber, setAnimationNumber] = useState(1);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimationNumber(
-        animationNumber < 3 ? animationNumber + 1 : animationNumber
-      );
-    }, 4000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setAnimationNumber(
+  //       animationNumber < 3 ? animationNumber + 1 : animationNumber
+  //     );
+  //   }, 4000);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, []);
   return (
     <div
       className={`bg-cream h-svh w-full  flex flex-col gap-y-9 
@@ -45,9 +45,9 @@ const Archetype = () => {
             <div className="absolute inset-0 bg-cream/60 z-10"></div>
           )}
 
-          <SmoothCardCarousel reverse={false}  />
-          <SmoothCardCarousel scrollDirection="down" reverse={false}  />
-          <SmoothCardCarousel reverse={true} />
+          <SmoothCardCarousel reverse={false} scrollDirection="up" />
+          <SmoothCardCarousel scrollDirection="down" reverse={false} />
+          <SmoothCardCarousel reverse={true} scrollDirection="up" />
         </div>
       )}
 

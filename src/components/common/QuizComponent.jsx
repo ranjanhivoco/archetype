@@ -16,10 +16,10 @@ const QuizComponent = ({
     setTimeout(() => {
       fn();
     }, 500);
-    setSelectedOptionIndex(index);
   };
 
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
+  
   return (
     <div className="h-full w-full relative overflow-hidden ">
       {/* main content */}
@@ -38,21 +38,23 @@ const QuizComponent = ({
                   role="option"
                   aria-selected={selectedOptionIndex === index}
                   onClick={(e) => {
-                    handleAction(onClick, index);
+                    // handleAction(onClick, index);
                     // e.preventDefault()
                   }}
                   onTouchEnd={(e) => {
-                    setStep(step + 1);
-                    setResult([
-                      ...result,
-                      {
-                        question_id: ques._id,
-                        question: ques.questionText,
-                        answer: option.text,
-                      },
-                    ]);
+                    setResult((prev) => {
+                      return [
+                        ...prev.filter((item) => item.question_id !== ques._id),
+                        {
+                          question_id: ques._id,
+                          question: ques.questionText,
+                          answer: option.text,
+                        },
+                      ];
+                    });
+
                     handleAction(onTouchEnd, index);
-                    // e.preventDefault()
+                    setSelectedOptionIndex(index);
                   }}
                   className={`pressable w-full h-full  text-xs font-normal text-left px-4 py-3 rounded-xl transition-colors border
                   ${
