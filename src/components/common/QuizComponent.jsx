@@ -10,20 +10,16 @@ const QuizComponent = ({
   setResult,
 }) => {
   
-  console.log(result);
-  
-
-  
+  // console.log(result);
   useEffect(() => {
     result.length > 0 ? setStep(step + 1) : "";
-    console.log(result.length);
-    
+    // console.log(result.length);
   }, [result.length]);
 
   const handleAction = (fn, index) => {
     setTimeout(() => {
       fn(index);
-    }, 500);
+    }, 300);
   };
 
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
