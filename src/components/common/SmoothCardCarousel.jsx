@@ -8,15 +8,15 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
   const cardRef = useRef(null);
   const [cardHeight, setCardHeight] = useState(0);  
 
-  console.log(cardHeight);
+  console.log(cardHeight,'cardHeight');
   
 
   useEffect(() => {
     if (cardRef.current) {
-      console.log('setting h');
+      console.log("setting height of cards");
       setCardHeight(cardRef.current.offsetHeight + 8);
     }
-  });
+  }, []);
 
   const cards = [
     { archtypeSrc: "/images/archtypes/Artist.png" },
