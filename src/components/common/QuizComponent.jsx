@@ -31,7 +31,7 @@ const QuizComponent = ({
         className={`overflow-hidden flex flex-col gap-y-8  h-[95%] w-full bg-milk-white rounded-xl text-black-coffee px-5 pt-9 pb-6`}
       >
         <h1 className=" text-sm font-semibold  text-left ">
-          Q{step}. {ques.questionText}
+          Q{step}. {ques.questionText}.
           <br />
           You -
         </h1>
