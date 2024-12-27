@@ -32,6 +32,8 @@ const QuizComponent = ({
       >
         <h1 className=" text-sm font-semibold  text-left ">
           Q{step}. {ques.questionText}
+          <br />
+          You -
         </h1>
 
         <ul aria-labelledby="question" className="flex flex-col flex-1 gap-y-2">

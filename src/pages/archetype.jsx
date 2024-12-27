@@ -14,7 +14,7 @@ const Archetype = () => {
       setAnimationNumber(
         animationNumber < 3 ? animationNumber + 1 : animationNumber
       );
-    }, 4000);
+    }, 3 * 1000);
 
     return () => {
       clearTimeout(timer);
