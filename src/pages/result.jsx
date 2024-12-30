@@ -64,7 +64,7 @@ const Result = () => {
         {/* <div className="relative flex-1  mb-[60%] w-full  flex justify-center"> */}
         
         {/* contents div non Gradient part */}
-        <div className="flex z-10 w-full mx-auto h-[67.5%] relative px-2 border border-black">
+        <div className="flex z-10 w-full mx-auto h-[67.5%] relative px-2 ">
           {/* left side text and image */}
           <div
             className={`w-1/2 h-full flex flex-1 transition-transform duration-1000
@@ -149,7 +149,7 @@ const Result = () => {
           }}
         >
           <p
-            className={`absolute w-full   bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-4 pb-5 border border-yellow-800
+            className={`absolute w-full   bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-4 pb-5 
           transition-transform duration-1000
           ${animationCounter >= 3 ? "translate-y-0" : "translate-y-[130%]"}
           `}

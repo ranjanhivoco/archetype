@@ -9,7 +9,6 @@ const QuizComponent = ({
   result,
   setResult,
 }) => {
-  
   // console.log(result);
   useEffect(() => {
     result.length > 0 ? setStep(step + 1) : "";
@@ -23,7 +22,7 @@ const QuizComponent = ({
   };
 
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
-  
+
   return (
     <div className="h-full w-full relative overflow-hidden ">
       {/* main content */}
