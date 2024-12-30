@@ -38,10 +38,8 @@ const Result = () => {
   }, []);
 
   return (
-    <div className="bg-off-white text-black h-svh px-6 w-full pt-10 flex flex-col gap-y-3 overflow-hidden">
-      {/* back btn  and the h2  */}
-      {/* use  later on */}
-
+    <div className="bg-off-white text-black h-svh px-6 w-full pt-10 flex flex-col flex-1 justify-between overflow-hidden">
+      {/* header section */}
       <div className="flex flex-col gap-y-8 ">
         <div className="flex gap-x-2 items-center">
           <Link href={"/quiz"}>
@@ -61,12 +59,12 @@ const Result = () => {
       </div>
 
       {/* main content */}
-      <div className="relative min-h-[50vh]  flex-1 mb-[60%] w-full  flex justify-center">
-
-      {/* <div className="relative min-h-[50vh]  flex-1  border border-black mb-[60%] w-full  flex justify-center"> */}
-      {/* <div className="relative flex-1  mb-[60%] w-full  flex justify-center"> */}
+      <div className="relative min-h-[50vh]  flex1 mb-[60%] w-full  flex justify-center">
+        {/* <div className="relative min-h-[50vh]  flex-1  border border-black mb-[60%] w-full  flex justify-center"> */}
+        {/* <div className="relative flex-1  mb-[60%] w-full  flex justify-center"> */}
+        
         {/* contents div non Gradient part */}
-        <div className="flex z-10 w-full mx-auto h-[72.5%] relative px-3">
+        <div className="flex z-10 w-full mx-auto h-[67.5%] relative px-2 border border-black">
           {/* left side text and image */}
           <div
             className={`w-1/2 h-full flex flex-1 transition-transform duration-1000
@@ -78,13 +76,14 @@ const Result = () => {
                 transform: "rotate(180deg)",
                 writingMode: "vertical-rl",
               }}
-              className="font-Edo h-1/2 self-end text-right text-xl font-normal uppercase text-white whitespace-nowrap	"
+              className="font-Edo h-1/2 self-end text-right text-xl leading-6 font-normal uppercase text-white whitespace-nowrap "
             >
+              {/* overflow-y-auto */}
               {object[0]?.title.replace(/\bthe\b/g, "") || "explorer"}
             </p>
 
             <Image
-              className="h-full w-full object-contain overflow-hidden"
+              className="h-full w-full object-contain overflow-hidden flex-1"
               width={117}
               height={255}
               src={object[0]?.image || ""}
@@ -93,10 +92,10 @@ const Result = () => {
             />
           </div>
 
-          {/* continue logo */}
+          {/*Center waala logo */}
           <Image
-            className="absolute  self-center mt-28  left-1/2 -translate-x-1/2"
-            // -mr-5
+            // className="absolute  self-center mt-28  left-1/2 -translate-x-1/2"
+            className="self-center mt-12"
             width={66}
             height={67}
             src={"/images/icons/blend-icon.png"}
@@ -129,7 +128,7 @@ const Result = () => {
               style={{
                 writingMode: "vertical-rl",
               }}
-              className="font-Edo  text-xl h-1/2 self-end text-left font-normal uppercase text-white whitespace-nowrap	"
+              className="font-Edo  text-xl leading-6 h-1/2 self-end text-left font-normal uppercase text-white whitespace-nowrap	"
             >
               {object[1]?.title.replace(/\bthe\b/g, "") || "explorer"}
             </p>
@@ -150,7 +149,7 @@ const Result = () => {
           }}
         >
           <p
-            className={`absolute w-full   bottom-0 font-medium   text-sm text-white  px-4 pt-4 pb-5
+            className={`absolute w-full   bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-4 pb-5 border border-yellow-800
           transition-transform duration-1000
           ${animationCounter >= 3 ? "translate-y-0" : "translate-y-[130%]"}
           `}
@@ -159,11 +158,10 @@ const Result = () => {
             prepared approach your career, while keeping passion curiosity in
             the forefront
           </p>
-
         </div>
       </div>
 
-      {/* bottom h2 and routing btn */}
+      {/* Footer section */}
       <div className=" absolute z-0 flex-1 bottom-9 left-0 px-5 w-full flex flex-col gap-y-10">
         <h2
           className={`text-lg   font-bold text-left
