@@ -1,5 +1,3 @@
-"use client";
-
 import QuizComponent from "@/components/common/QuizComponent";
 import React, { useState, useMemo, useEffect } from "react";
 import TinderCard from "react-tinder-card";
