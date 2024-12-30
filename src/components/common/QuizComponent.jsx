@@ -65,7 +65,7 @@ const QuizComponent = ({
                     handleAction(onTouchEnd, index);
                     setSelectedOptionIndex(index);
                   }}
-                  className={`pressable w-full h-full  text-xs font-normal text-left px-4 py-3 rounded-xl transition-colors border
+                  className={`pressable w-full h-full flex items-center   text-xs font-normal text-left px-4 py-3 rounded-xl transition-colors border
                   ${
                     selectedOptionIndex === index
                       ? " border-[#00A55C]/20 bg-[#00A55C]/20 active:ring-2 active:ring-[#00A55C]/20"
