@@ -30,16 +30,11 @@ const ThankYouScreen = () => {
     }
   };
 
-  const handleDownload = async () => {
+  const handleDownload = () => {
     const fileUrl = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
-    const response = await fetch(fileUrl);
-    const blob = await response.blob();
-    
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'report.pdf';
-    link.click();
+    window.open(fileUrl, '_blank'); // Opens the PDF in a new tab
   };
+  
 
 
 

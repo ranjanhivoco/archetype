@@ -44,7 +44,6 @@ const Result = () => {
       {/* border border-black  */}
       {/* header section */}
 
-
       {/* <div className="flex flex-col w-full h-full flex-1 justify-between"> */}
       <div className="flex flex-col gap-y-8  ">
         {/* mb-3 */}
@@ -69,7 +68,7 @@ const Result = () => {
       <div className="flex flex-col self-center flex-">
         <div className="relative flex- mb-[] w-full  flex flex-col gap-y- justify-center ">
           {/* contents div non Gradient part */}
-          <div className="flex relative z-10 w-full mx-auto min-h-[16.25rem]  aspect-[1.25] flex-1 px-2 ">
+          <div className="flex relative z-10 w-full mx-auto min-h-[16.25rem]  aspect-[1.25] flex- px-2 ">
             {/* left side text and image */}
             <div
               className={`w-1/2 h-full flex flex1 transition-transform duration-1000
@@ -81,7 +80,7 @@ const Result = () => {
                   transform: "rotate(180deg)",
                   writingMode: "vertical-rl",
                 }}
-                className="my-1 overflow-y-auto whitespace-nowrap font-Edo h-1/2 self-end text-right text-xl leading-6 font-normal uppercase text-white"
+                className="overflow-y-scroll mb-2 whitespace-nowrap font-Edo h-[45%] self-end text-right text-xl leading-6 font-normal uppercase text-white"
               >
                 {object[0]?.title.replace(/\bthe\b/g, "") || "explorer"}
               </p>
@@ -132,7 +131,10 @@ const Result = () => {
                 style={{
                   writingMode: "vertical-rl",
                 }}
-                className="my-1 overflow-y-auto whitespace-nowrap font-Edo  text-xl leading-6 h-1/2 self-end text-left font-normal uppercase text-white"
+
+                // className="overflow-y-scroll mb-2 whitespace-nowrap font-Edo h-[45%] self-end text-right text-xl leading-6 font-normal uppercase text-white"
+
+                className="overflow-y-scroll overflow-x-hidden  mb-2 whitespace-nowrap font-Edo  h-[45%] self-end text-left  font-normal uppercase text-white  text-xl leading-"
               >
                 {object[1]?.title.replace(/\bthe\b/g, "") || "explorer"}
               </p>
@@ -216,7 +218,9 @@ const Result = () => {
           href={"/knowmore"}
           className={`transition-transform duration-1000 h-[46px] w-full
                     ${
-                      animationCounter >= 3 ? "translate-y-0" : "translate-y-[280%]"
+                      animationCounter >= 3
+                        ? "translate-y-0"
+                        : "translate-y-[280%]"
                     }
                     `}
         />
