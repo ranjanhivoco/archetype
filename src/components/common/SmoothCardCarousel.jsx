@@ -8,12 +8,11 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
   const cardRef = useRef(null);
   const [cardHeight, setCardHeight] = useState(0);//232  
 
-  console.log(cardHeight,'cardHeight');
+  // console.log(cardHeight,'cardHeight');
   
-
   useEffect(() => {
     if (cardRef.current) {
-      console.log("setting height of cards");
+      // console.log("setting height of cards");
       setCardHeight(cardRef.current.offsetHeight + 8);
     }
   }, []);
@@ -38,9 +37,9 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
 
     let animationFrameId;
     let startTime;
-    // const gap=10
     const totalCardHeight =
       cardHeight * cards.length + cardHeight * cards.length; 
+      
     const scrollSpeed = 0.1 // Pixels per millisecond
 
     const animate = (currentTime) => {

@@ -28,5 +28,10 @@ body {
   scrollbar-width: none; 
    */
 
+   /* display: none; 
+
+   @media screen and (max-width: 550px) and (orientation: portrait) {
+        display: block;
+  } */
 }
 

@@ -36,7 +36,11 @@ const Archetype = () => {
 
       {/* <section> */}
       {animationNumber === 2 && (
-        <InstagramStoryPlayer setAnimationNumber={setAnimationNumber} />
+        // <div className="h-svh w-full">
+        <InstagramStoryPlayer 
+        videoSrc={'https://careerarchetypes.s3.ap-south-1.amazonaws.com/videos/Intro_Video.mp4'}
+        setAnimationNumber={setAnimationNumber} />
+        // </div>
       )}
       {/* <CareerArchetype /> */}
 

@@ -13,16 +13,16 @@ function Signup() {
     <div className="flex justify-center items-center h-svh bg-dark-brown py-10">
       <div className=" text-white px-8 h-full flex flex-col gap-y-10">
         <section className="flex flex-col gap-y-9">
-          <div className="cursor-pointer">
+          <Link href={"knowmore"}>
             <MoveLeft size={20} />
-          </div>
+          </Link>
 
           <div className="flex flex-col items-center">
             <Image
               src="/images/quiz.png"
               priority={true}
               width={140}
-              height={147}
+              height={144}
               alt="Picture of icon"
             />
 
@@ -39,7 +39,7 @@ function Signup() {
               onChange={(e) => setName(e.target.value)}
               type="text"
               name="name"
-              // autoComplete="name" 
+              // autoComplete="name"
               // doesnt work in mobile simulation in chrome
               required
               minLength="2"

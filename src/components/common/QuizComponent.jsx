@@ -9,15 +9,25 @@ const QuizComponent = ({
   result,
   setResult,
 }) => {
-  // console.log(result);
-  useEffect(() => {
-    result.length > 0 ? setStep(step + 1) : "";
-    // console.log(result.length);
-  }, [result.length]);
 
-  const handleAction = (fn, index) => {
+  // console.log(result.length,'result',step,'step')
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (result.length > 0) {
+        setStep(step + 1);
+      }
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [result.length]);
+  
+
+  const handleAction = () => {
     setTimeout(() => {
-      fn(index);
+      onTouchEnd();      
     }, 300);
   };
 
@@ -54,6 +64,8 @@ const QuizComponent = ({
                     setResult((prev) => {
                       return [
                         ...prev.filter((item) => item.question_id !== ques._id),
+                        // remove current question  and keep the rest
+                        // latest click value of  current question
                         {
                           question_id: ques._id,
                           question: ques.questionText,
@@ -62,7 +74,7 @@ const QuizComponent = ({
                       ];
                     });
 
-                    handleAction(onTouchEnd, index);
+                    handleAction();
                     setSelectedOptionIndex(index);
                   }}
                   className={`pressable w-full h-full flex items-center   text-xs font-normal text-left px-4 py-3 rounded-xl transition-colors border
@@ -91,6 +103,7 @@ const QuizComponent = ({
         // {/* closer div  nzdik wala*/}
         <div className="absolute w-[94%] h-[5%]  left-1/2 bottom-[2.5%] bg-white/10 rounded-b-xl  z-30 transform -translate-x-1/2"></div>
       )}
+      
     </div>
   );
 };

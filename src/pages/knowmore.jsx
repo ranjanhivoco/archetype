@@ -14,8 +14,13 @@ const KnowMore = () => {
 
 
   return (
-    <div className="h-full">
-      <InstagramStoryPlayer setAnimationNumber={setAnimationNumber} />
+    <div className="h-svh w-full">
+      <InstagramStoryPlayer
+        videoSrc={
+          "https://careerarchetypes.s3.ap-south-1.amazonaws.com/videos/The_Artist.mp4"
+        }
+        setAnimationNumber={setAnimationNumber}
+      />
     </div>
   );
 };

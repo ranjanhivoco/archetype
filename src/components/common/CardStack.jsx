@@ -1,19 +1,18 @@
 import QuizComponent from "@/components/common/QuizComponent";
 import React, { useState, useMemo, useEffect } from "react";
 import TinderCard from "react-tinder-card";
-import initialQuestions from "../../assets/questions";
 import { useRouter } from "next/router";
 
 const CardSwiper = ({ step, setStep, setIsLoading }) => {
   const [questions, setQuestions] = useState(null);
   const [result, setResult] = useState([]);
 
-  const [currentIndex, setCurrentIndex] = useState(initialQuestions.length - 1);
-  // const [loading, setLoading] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(11);
   const [error, setError] = useState(null);
   const router = useRouter();
 
   const URL = "https://backend.hivoco.com/quiz/questions";
+  
   const fetchData = async () => {
     try {
       const response = await fetch(URL);
@@ -77,7 +76,7 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
 
   const childRefs = useMemo(
     () =>
-      Array(initialQuestions.length)
+      Array(11)
         .fill(0)
         .map(() => React.createRef()),
     []
@@ -100,10 +99,11 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
     step !== 11 && triggerSwipe("left", index); // if eleven then its the last card
   };
 
+
+  // console.log(questions,'ques')
   return (
     //this div  takes the rest of the page
     <div
-      // onClick={(e) => e.stopPropagation()}
       className="w-full h-full overflow-hidden "
     >
       <div className="w-full h-full  ">
@@ -111,20 +111,20 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
         {questions?.map((question, index) => (
           <TinderCard
             ref={childRefs[index]}
-            className={`absolute w-full h-3/5 swipe overflow-hidden z-0`} // this abolute keeps them stacked
+            className={`absolute w-full h-3/5 swipe overflow-hidden z-0`} 
+
             swipeRequirementType="position"
             swipeThreshold={1000}
-            // onCardLeftScreen={() => setStep( step + 1)}
             key={index}
             onSwipe={() => {
               return false;
             }}
-            // onCardLeftScreen={() => setStep(step + 1)}
             // preventSwipe={["left", "right", "up", "down"]} // Prevent all user swipes
           >
             <div
               //  first question will be on top brother
-              // style={{ zIndex: initialQuestions.length - index }}
+              
+              // style={{ zIndex: questions?.length - index }}
               className="h-full w-full px-7 rounded-xl overflow-hidden "
             >
               <QuizComponent

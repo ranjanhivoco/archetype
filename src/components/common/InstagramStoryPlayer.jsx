@@ -4,8 +4,8 @@ import LinkButton from "./LinkButton";
 
 const InstagramStoryPlayer = ({
   setAnimationNumber,
-  videoSrc = "https://www.w3schools.com/html/mov_bbb.mp4",
-  aspectRatio = "9/16",
+  videoSrc='https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+  // videoSrc = "https://www.w3schools.com/html/mov_bbb.mp4",
   onReply, // Optional callback for reply action
 }) => {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -24,6 +24,7 @@ const InstagramStoryPlayer = ({
       setIsPlaying(true);
     }
   };
+
 
   useEffect(() => {
     const video = videoRef.current;
@@ -62,9 +63,9 @@ const InstagramStoryPlayer = ({
 
     // Handle video end event as a fallback
     const handleVideoEnd = () => {
-      setAnimationNumber && setAnimationNumber((prev) => prev + 1);
       setIsVideoEnded(true);
       setIsPlaying(false);
+      // setAnimationNumber((prev) => prev + 1);
     };
     video.addEventListener("ended", handleVideoEnd);
 
@@ -76,6 +77,8 @@ const InstagramStoryPlayer = ({
       video.removeEventListener("ended", handleVideoEnd);
     };
   }, [isPlaying, videoSrc, isVideoEnded]);
+
+  
 
   const togglePlayPause = () => {
     if (isVideoEnded) return; // Prevent play if video has ended
@@ -96,14 +99,15 @@ const InstagramStoryPlayer = ({
     }
   };
 
+
+  useEffect(() => {
+    if (isVideoEnded) {
+      setAnimationNumber((prev) => prev + 1);
+    }
+  }, [isVideoEnded]);
+
   return (
-    <div
-      className="relative w-full h-svh"
-      style={{
-        aspectRatio: aspectRatio,
-        margin: "0 auto", // Center the player if needed
-      }}
-    >
+    <div className="relative h-svh w-full ">
       {/* Progress Bar */}
       <div className="absolute top-2 left-0 right-0 z-10 px-2">
         <div className="h-2 bg-[#8D8D8D]/50 rounded-3xl overflow-hidden">
@@ -118,8 +122,9 @@ const InstagramStoryPlayer = ({
       <video
         ref={videoRef}
         src={videoSrc}
-        className="w-full h-full object-cover absolute inset-0"
-        playsInline
+        className="w-full h-full object-cover"
+        // playsInline
+        // onEnded={()=>{setAnimationNumber((prev) => prev + 1)}}
         muted={isMuted}
       />
 
