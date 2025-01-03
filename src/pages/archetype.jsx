@@ -14,7 +14,7 @@ const Archetype = () => {
       setAnimationNumber(
         animationNumber < 3 ? animationNumber + 1 : animationNumber
       );
-    }, 2* 1000);
+    }, 2.5* 1000);
 
     return () => {
       clearTimeout(timer);
@@ -39,7 +39,11 @@ const Archetype = () => {
         // <div className="h-svh w-full">
         <InstagramStoryPlayer 
         videoSrc={'https://careerarchetypes.s3.ap-south-1.amazonaws.com/videos/Intro_Video.mp4'}
-        setAnimationNumber={setAnimationNumber} />
+        setAnimationNumber={setAnimationNumber} 
+        animationNumber={animationNumber}
+
+        />
+        
         // </div>
       )}
       {/* <CareerArchetype /> */}

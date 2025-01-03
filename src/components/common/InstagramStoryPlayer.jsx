@@ -3,6 +3,7 @@ import { Pause, Play, Volume2, VolumeX, Reply, RefreshCcw, SkipForward } from "l
 // import LinkButton from "./LinkButton";
 
 const InstagramStoryPlayer = ({
+  animationNumber,
   setAnimationNumber,
   videoSrc='https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
   // videoSrc = "https://www.w3schools.com/html/mov_bbb.mp4",
@@ -14,6 +15,8 @@ const InstagramStoryPlayer = ({
   const [isVideoEnded, setIsVideoEnded] = useState(false);
   const videoRef = useRef(null);
   const progressIntervalRef = useRef(null);
+  
+  const [isLoaded,setIsLoaded]=useState(false)
 
   const resetVideo = () => {
     const video = videoRef.current;
@@ -103,12 +106,21 @@ const InstagramStoryPlayer = ({
     }
   }, [isVideoEnded]);
 
+  useEffect(()=>{
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 200);
+  },[])
+
   return (
     <div
       // style={{
       //   background: "linear-gradient(to left, #F28B55, #B40C0B)",
       // }}
-      className="relative h-svh w-full bg-black"
+      className={`relative h-svh w-full bg-black
+                transform transition-all duration-700 ease-in-out 
+                ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"}
+        `}
     >
       {/* Progress Bar */}
       <div className="absolute top-2 left-0 right-0 z-10 px-2">
@@ -149,12 +161,16 @@ const InstagramStoryPlayer = ({
       {/* top-1/2 -translate-y-1/2 */}
       <div className="absolute bottom-28 flex flex-col right-5 z-30  gap-y-4">
         {/* flex flex-col justify-between items-center */}
-        <button
-          className="bg-black/50 p-3 rounded-full"
-          onClick={() => setAnimationNumber((prev) => prev + 1)}
-        >
-          <SkipForward color="white" />
-        </button>
+
+        {/* show is archetype , not in know more  */}
+        {animationNumber > 0 && (
+          <button
+            onClick={() => setAnimationNumber((prev) => prev + 1)}
+            className="bg-black/50 p-3 rounded-full"
+          >
+            <SkipForward color="white" />
+          </button>
+        )}
 
         <button onClick={toggleMute} className="bg-black/50 p-3 rounded-full">
           {isMuted ? <VolumeX color="white" /> : <Volume2 color="white" />}

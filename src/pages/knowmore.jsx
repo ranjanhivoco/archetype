@@ -20,6 +20,7 @@ const KnowMore = () => {
           "https://careerarchetypes.s3.ap-south-1.amazonaws.com/videos/The_Artist.mp4"
         }
         setAnimationNumber={setAnimationNumber}
+        animationNumber={animationNumber}
       />
     </div>
   );
