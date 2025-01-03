@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Pause, Play, Volume2, VolumeX, Reply, RefreshCcw } from "lucide-react";
+import { Pause, Play, Volume2, VolumeX, Reply, RefreshCcw, SkipForward } from "lucide-react";
 import LinkButton from "./LinkButton";
 
 const InstagramStoryPlayer = ({
@@ -78,8 +78,6 @@ const InstagramStoryPlayer = ({
     };
   }, [isPlaying, videoSrc, isVideoEnded]);
 
-  
-
   const togglePlayPause = () => {
     if (isVideoEnded) return; // Prevent play if video has ended
     setIsPlaying(!isPlaying);
@@ -99,7 +97,6 @@ const InstagramStoryPlayer = ({
     }
   };
 
-
   useEffect(() => {
     if (isVideoEnded) {
       setAnimationNumber((prev) => prev + 1);
@@ -107,7 +104,12 @@ const InstagramStoryPlayer = ({
   }, [isVideoEnded]);
 
   return (
-    <div className="relative h-svh w-full ">
+    <div
+      // style={{
+      //   background: "linear-gradient(to left, #F28B55, #B40C0B)",
+      // }}
+      className="relative h-svh w-full bg-black"
+    >
       {/* Progress Bar */}
       <div className="absolute top-2 left-0 right-0 z-10 px-2">
         <div className="h-2 bg-[#8D8D8D]/50 rounded-3xl overflow-hidden">
@@ -122,13 +124,13 @@ const InstagramStoryPlayer = ({
       <video
         ref={videoRef}
         src={videoSrc}
-        className="w-full h-full object-cover"
-        // playsInline
-        // onEnded={()=>{setAnimationNumber((prev) => prev + 1)}}
+        preload="none"
+        className="w-full h-full object-contain"
+        playsInline
         muted={isMuted}
       />
 
-      {/* Central Play/Pause Overlay */}
+      {/* Central Play/Pause Overlayed */}
       {!isVideoEnded && (
         <div
           onClick={togglePlayPause}
@@ -142,42 +144,17 @@ const InstagramStoryPlayer = ({
         </div>
       )}
 
-      {/* Video Ended Overlay */}
-      {isVideoEnded && (
-        <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/50 space-x-4 w-full">
-          <button
-            onClick={resetVideo}
-            className="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full flex items-center space-x-2"
-          >
-            <RefreshCcw color="white" size={24} />
-            <span>Replay</span>
-          </button>
-
-          {onReply && (
-            <button
-              onClick={handleReply}
-              className="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full flex items-center space-x-2"
-            >
-              <Reply color="white" size={24} />
-              <span>Replay</span>
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* Mute Button on Right */}
-      <div className="absolute bottom-5 z-30 px-5 flex justify-between items-center w-full gap-x-3 ">
-        <span
-          className="w-full "
+      {/* Mute Button on Right  */}
+      {/* border border-black */}
+      {/* top-1/2 -translate-y-1/2 */}
+      <div className="absolute bottom-28 flex flex-col right-5 z-30  gap-y-4">
+        {/* flex flex-col justify-between items-center */}
+        <button
+          className="bg-black/50 p-3 rounded-full"
           onClick={() => setAnimationNumber((prev) => prev + 1)}
         >
-          <LinkButton
-            href={""}
-            title={"Skip"}
-            className={"h-12 gap-x-2 w-full !bg-black/45"}
-            skip={true}
-          />
-        </span>
+          <SkipForward color="white" />
+        </button>
 
         <button onClick={toggleMute} className="bg-black/50 p-3 rounded-full">
           {isMuted ? <VolumeX color="white" /> : <Volume2 color="white" />}
