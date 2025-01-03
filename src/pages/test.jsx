@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Pause, Play, Volume2, VolumeX, Reply, RefreshCcw } from "lucide-react";
-import LinkButton from "./LinkButton";
+// import LinkButton from "./LinkButton";
 
 const InstagramStoryPlayer = ({
   setAnimationNumber,
@@ -166,7 +166,7 @@ const InstagramStoryPlayer = ({
 
       {/* Mute Button on Right */}
       <div className="absolute bottom-5 z-30 px-5 flex justify-between items-center w-full gap-x-3 ">
-        <span
+        {/* <span
           className="w-full "
           onClick={() => setAnimationNumber((prev) => prev + 1)}
         >
@@ -176,7 +176,7 @@ const InstagramStoryPlayer = ({
             className={"h-12 gap-x-2 w-full !bg-black/45"}
             skip={true}
           />
-        </span>
+        </span> */}
 
         <button onClick={toggleMute} className="bg-black/50 p-3 rounded-full">
           {isMuted ? <VolumeX color="white" /> : <Volume2 color="white" />}

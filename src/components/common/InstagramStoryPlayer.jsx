@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Pause, Play, Volume2, VolumeX, Reply, RefreshCcw, SkipForward } from "lucide-react";
-import LinkButton from "./LinkButton";
+// import LinkButton from "./LinkButton";
 
 const InstagramStoryPlayer = ({
   setAnimationNumber,
