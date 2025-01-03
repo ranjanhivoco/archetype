@@ -106,11 +106,11 @@ const InstagramStoryPlayer = ({
     }
   }, [isVideoEnded]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setTimeout(() => {
       setIsLoaded(true);
-    }, 200);
-  },[])
+    }, 400);
+  }, []);
 
   return (
     <div

@@ -7,6 +7,7 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
   const containerRef = useRef(null);
   const cardRef = useRef(null);
   const [cardHeight, setCardHeight] = useState(0);//232  
+  const [isLoaded,setIsLoaded]=useState(false)
 
   // console.log(cardHeight,'cardHeight');
   
@@ -93,8 +94,18 @@ const SmoothCardCarousel = ({ scrollDirection , reverse  }) => {
       </div>
     ));
   };
+
+  useEffect(()=>{
+    setIsLoaded(true);
+  },[])
+
   return (
-    <div className="relative w-full h-full flex  justify-center overflow-hidden ">
+    <div
+      className={`relative w-full h-full flex  justify-center overflow-hidden 
+                transform transition-all duration-1000 ease-in-out 
+                ${isLoaded ? "opacity-100 " : "opacity-0 "}
+    `}
+    >
       <div
         ref={containerRef}
         className="absolute w-full flex items-center justify-center"
