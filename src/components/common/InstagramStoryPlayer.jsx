@@ -118,8 +118,8 @@ const InstagramStoryPlayer = ({
       //   background: "linear-gradient(to left, #F28B55, #B40C0B)",
       // }}
       className={`relative h-svh w-full bg-black
-                transform transition-all duration-700 ease-in-out 
-                ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"}
+                transform transition-all duration-1000 ease-in-out 
+                ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale"}
         `}
     >
       {/* Progress Bar */}
@@ -136,7 +136,6 @@ const InstagramStoryPlayer = ({
       <video
         ref={videoRef}
         src={videoSrc}
-        preload="none"
         className="w-full h-full object-contain"
         playsInline
         muted={isMuted}
