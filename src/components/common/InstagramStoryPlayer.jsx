@@ -154,11 +154,12 @@ const InstagramStoryPlayer = ({
       )}
 
       <div className="absolute top-[10%] flex flex-col right-4 z-30 gap-y-2">
-        {showSkipBtn && (
-          <Link href={href} className="bg-black/50 p-3 rounded-full">
-            <SkipForward color="white" />
-          </Link>
-        )}
+        <Link
+          href={href}
+          className={`bg-black/50 p-3 rounded-full ${showSkipBtn ? "opacity-100" : "opacity-0"}`}
+        >
+          <SkipForward color="white" />
+        </Link>
 
         <button onClick={toggleMute} className="bg-black/50 p-3 rounded-full">
           {isMuted ? <VolumeX color="white" /> : <Volume2 color="white" />}
