@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Pause, Play, Volume2, VolumeX, Reply, RefreshCcw, SkipForward } from "lucide-react";
-// import LinkButton from "./LinkButton";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const InstagramStoryPlayer = ({
-  animationNumber,
-  setAnimationNumber,
+  href,
+  showSkipBtn,
   videoSrc='https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-  // videoSrc = "https://www.w3schools.com/html/mov_bbb.mp4",
   onReply, // Optional callback for reply action
 }) => {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -15,7 +15,6 @@ const InstagramStoryPlayer = ({
   const [isVideoEnded, setIsVideoEnded] = useState(false);
   const videoRef = useRef(null);
   const progressIntervalRef = useRef(null);
-  
   const [isLoaded,setIsLoaded]=useState(false)
 
   const resetVideo = () => {
@@ -28,6 +27,7 @@ const InstagramStoryPlayer = ({
     }
   };
 
+  const router =useRouter()
 
   useEffect(() => {
     const video = videoRef.current;
@@ -69,6 +69,7 @@ const InstagramStoryPlayer = ({
       setIsVideoEnded(true);
       setIsPlaying(false);
       // setAnimationNumber((prev) => prev + 1);
+      
     };
     video.addEventListener("ended", handleVideoEnd);
 
@@ -102,24 +103,21 @@ const InstagramStoryPlayer = ({
 
   useEffect(() => {
     if (isVideoEnded) {
-      setAnimationNumber((prev) => prev + 1);
+      router.push(href);
     }
   }, [isVideoEnded]);
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoaded(true);
-    }, 400);
+    }, 100);
   }, []);
 
   return (
     <div
-      // style={{
-      //   background: "linear-gradient(to left, #F28B55, #B40C0B)",
-      // }}
-      className={`relative h-svh w-full bg-black
-                transform transition-all duration-1000 ease-in-out 
-                ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale"}
+      className={`fixed inset-0 h-svh w-full bg-black 
+         transition-transform duration-1000 ease-in-out
+        ${isLoaded ? "translate-x-0" : "translate-x-full"} 
         `}
     >
       {/* Progress Bar */}
@@ -155,20 +153,11 @@ const InstagramStoryPlayer = ({
         </div>
       )}
 
-      {/* Mute Button on Right  */}
-      {/* border border-black */}
-      {/* top-1/2 -translate-y-1/2 */}
-      <div className="absolute bottom-28 flex flex-col right-5 z-30  gap-y-4">
-        {/* flex flex-col justify-between items-center */}
-
-        {/* show is archetype , not in know more  */}
-        {animationNumber > 0 && (
-          <button
-            onClick={() => setAnimationNumber((prev) => prev + 1)}
-            className="bg-black/50 p-3 rounded-full"
-          >
+      <div className="absolute top-[10%] flex flex-col right-4 z-30 gap-y-2">
+        {showSkipBtn && (
+          <Link href={href} className="bg-black/50 p-3 rounded-full">
             <SkipForward color="white" />
-          </button>
+          </Link>
         )}
 
         <button onClick={toggleMute} className="bg-black/50 p-3 rounded-full">

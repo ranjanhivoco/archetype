@@ -215,7 +215,7 @@ const Result = () => {
 
         <LinkButton
           title={"Know More"}
-          href={"/knowmore"}
+          href={"/know-more"}
           className={`transition-transform duration-1000 h-[46px] w-full
                     ${
                       animationCounter >= 3

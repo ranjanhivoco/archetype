@@ -2,23 +2,31 @@ import LinkButton from "@/components/common/LinkButton";
 import { ArrowRight, MoveLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Signup() {
 
+  const [startAnimation, setStartAnimation] = useState(false);
   const [email,setEmail]=useState('')
   const [name,setName]=useState('')
+
+  useEffect(() => {
+        setStartAnimation(true);
+  }, []);
 
   return (
     <div className="flex justify-center items-center h-svh bg-dark-brown py-10">
       <div className=" text-white px-8 h-full flex flex-col gap-y-10">
         <section className="flex flex-col gap-y-9">
-          <Link href={"knowmore"}>
+          <Link href={"know-more"}>
             <MoveLeft size={20} />
           </Link>
 
           <div className="flex flex-col items-center">
             <Image
+              className={`transition-all duration-1000 ease-in-out
+               ${startAnimation ? "scale-100 opacity-100" : "scale-0 opacity-0"}
+              `}
               src="/images/quiz.png"
               priority={true}
               width={140}
@@ -26,14 +34,24 @@ function Signup() {
               alt="Picture of icon"
             />
 
-            <h2 className="  text-xl font-bold  text-center tracking-wide">
+            <h2
+              className={`
+              transition-all duration-1000 ease-in-out
+            ${startAnimation ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}
+              text-xl font-bold  text-center tracking-wide`}
+            >
               To Get Your Report
             </h2>
           </div>
         </section>
 
         <form className="flex flex-col flex-1 justify-between">
-          <div className="">
+          <div
+            className={`
+            transition-all duration-1000 ease-in-out
+            ${startAnimation ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}
+            `}
+          >
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -76,8 +94,11 @@ function Signup() {
           </div>
 
           <Link
-            href={"thankYouScreen"}
-            className="flex w-full items-center justify-center px-2 py-3 gap-2 bg-[#FFF3E140] rounded-[40px] text-white font-semibold text-sm"
+            href={"thank-you-screen"}
+            className={`
+              transition-all duration-1000 ease-in-out
+              ${startAnimation ? "translate-y-0 opacity-100" : "translate-y-[200%] opacity-0"}
+              flex w-full items-center justify-center px-2 py-3 gap-2 bg-[#FFF3E140] rounded-[40px] text-white font-semibold text-sm`}
           >
             <span>SUBMIT</span>
             <ArrowRight size={20} />

@@ -1,10 +1,16 @@
 import { Download, Share2 } from "lucide-react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const ThankYouScreen = () => {
   const [shared, setShared] = useState(false);
   const [error, setError] = useState('');
+
+  const [startAnimation, setStartAnimation] = useState(false);
+  useEffect(() => {
+    setStartAnimation(true);
+  }, []);
+
 
   const handleShare = async () => {
     // Reset states
@@ -45,10 +51,13 @@ const ThankYouScreen = () => {
         paddingTop: "42%",
         // percent is wrt to this divs width not height
       }}
-      className="h-svh bg-no-repeat bg-cover pb-9 flex  flex-col box px-5 gap-y-[19%]"
+      className="fixed inset-0 h-svh bg-no-repeat bg-cover pb-9 flex  flex-col box px-5 gap-y-[19%]"
     >
       <div className="flex flex-col justify-between flex-1">
-        <h1 className="text-[2.5rem] leading-tight font-bold text-left text-dark-brown">
+        <h1 className={`
+          transition-all duration-1000 ease-in-out
+          ${startAnimation ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}
+          text-[2.5rem] leading-tight font-bold text-left text-dark-brown`}>
           Thank You for
           <br />
           taking the
@@ -57,7 +66,9 @@ const ThankYouScreen = () => {
         </h1>
 
         <Image
-          className="self-end "
+          className={`
+          self-end transition-all duration-1000 ease-in-out
+          ${startAnimation ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}
           priority={true}
           src={"/images/open book.png"}
           width={222}
@@ -66,7 +77,10 @@ const ThankYouScreen = () => {
         />
       </div>
 
-      <div className="flex justify-between w-full gap-x-3">
+      <div className={`flex justify-between w-full gap-x-3 self-end 
+          transition-all duration-1000 ease-in-out
+          ${startAnimation ? "translate-y-0 opacity-100" : "translate-y-36 opacity-0"}
+        `}>
         {/* Download Button */}
         <button 
         onClick={handleDownload}

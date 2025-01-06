@@ -12,13 +12,28 @@ import React, { useEffect, useState } from "react";
 const Quiz = () => {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [startAnimation,setStartAnimation]=useState(false)
+
+  useEffect(() => {
+    setStartAnimation(true);
+  }, []);
+
   return (
-    <div className="h-svh bg-dark-brown relative pt-14 w-full flex flex-col overflow-hidden">
+    <div
+      className={`
+    h-svh bg-dark-brown  pt-14 w-full flex flex-col `}
+    >
       {/* main quiz ui */}
-      <div className="flex flex-col gap-y-10 w-full h-full ">
+      <div
+        className={`flex flex-col gap-y-10 w-full h-full
+          transition-opacity duration-1000 ease-in-out
+          ${startAnimation ? "opacity-100" : "opacity-0"}
+        `}
+      >
         <section className="flex flex-col gap-y-10 w-full  px-7  ">
           <div className=" flex  w-full justify-center items-center text-white relative ">
-            <Link className="absolute left-0" href={"/archetype"}>
+            <Link className="absolute left-0" href={"/intro-video"}>
               <ArrowLeft size={24} />
             </Link>
 
@@ -36,7 +51,11 @@ const Quiz = () => {
 
       {/* z index 0 */}
       <Image
-        className="absolute z-0 w-full h-auto  bottom-0 left-1/2 -translate-x-1/2"
+        className={`
+        transition-opacity duration-1000 ease-in-out
+        ${startAnimation ? "opacity-100" : "opacity-0"}
+        absolute z-0 w-full h-auto  bottom-0 left-1/2 -translate-x-1/2`}
+
         priority={true}
         src={"/images/quiz-bottom-part.png"}
         height={84}
@@ -49,7 +68,6 @@ const Quiz = () => {
         <div className="absolute inset-0 bg-black/60 z-40 backdrop-blur-sm"></div>
       )}
 
-      {/* lottie animation over the blur  when quiz ends z 50 */}
       {isLoading && <LottieAnimation />}
     </div>
   );

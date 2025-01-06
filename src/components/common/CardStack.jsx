@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 
 const CardSwiper = ({ step, setStep, setIsLoading }) => {
   const [questions, setQuestions] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [result, setResult] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(11);
@@ -21,6 +22,7 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
       }
       const result = await response.json();
       setQuestions(result);
+      setIsLoaded(true)
     } catch (error) {
       setError(error.message);
     } finally {
@@ -101,18 +103,31 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
 
 
   // console.log(questions,'ques')
+
+
+//   <div
+//   className={`fixed inset-0 h-svh w-full bg-black 
+//      transition-transform duration-1000 ease-in-out
+//     ${isLoaded ? "translate-x-0" : "translate-x-full"} 
+//     `}
+// >
+  // fixed inset-0
+  // transition-  delay-1000 ease-in-out
+  // ${startAnimation ? "translate-y-0 " : "translate-y-full"}
+
   return (
-    //this div  takes the rest of the page
     <div
-      className="w-full h-full overflow-hidden "
+      className={`w-full h-full overflow-hidden
+                transition-opacity duration-[1.5s] ease-in-out
+                ${isLoaded ? "opacity-100" : "opacity-0"}
+                `}
     >
       <div className="w-full h-full  ">
         {/* this div  takes the rest of the page */}
         {questions?.map((question, index) => (
           <TinderCard
             ref={childRefs[index]}
-            className={`absolute w-full h-3/5 swipe overflow-hidden z-0`} 
-
+            className={`absolute w-full h-3/5 swipe overflow-hidden z-0`}
             swipeRequirementType="position"
             swipeThreshold={1000}
             key={index}
@@ -123,7 +138,7 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
           >
             <div
               //  first question will be on top brother
-              
+
               // style={{ zIndex: questions?.length - index }}
               className="h-full w-full px-7 rounded-xl overflow-hidden "
             >
