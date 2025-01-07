@@ -151,11 +151,6 @@ const InstagramStoryPlayer = ({
 
   return (
     <div
-      // onClick={(e) => {
-      //   console.log(e.target , e.currentTarget);
-
-      //   e.target === e.currentTarget && setDisplayBtns(true);
-      // }}
       className={`fixed inset-0 h-svh w-full bg-black 
       transition-transform duration-1000 ease-in-out
       ${isLoaded ? "translate-x-0" : "translate-x-full"} 
@@ -193,7 +188,7 @@ const InstagramStoryPlayer = ({
           className="absolute inset-0 z-20 flex items-center justify-center "
         >
           {!isPlaying && (
-            <div className="bg-black/50 p-4 rounded-full">
+            <div className="bg-black/50 p-4 rounded-full pointer-events-none">
               <Play color="white" size={40} />
             </div>
           )}
@@ -215,8 +210,8 @@ const InstagramStoryPlayer = ({
           className={`bg-black/50 p-3 rounded-full 
             ${
               showSkipBtn
-                ? "opacity-100 pointer-events-auto"
-                : "opacity-0 pointer-events-none"
+                ? "opacity-100"
+                : "opacity-0 "
             }
             `}
         >
