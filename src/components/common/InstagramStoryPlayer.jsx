@@ -207,12 +207,12 @@ const InstagramStoryPlayer = ({
         <Link
           // onClick={(e) => !displayBtns && e.stopPropagation()}
           href={displayBtns ? href : ""}
-          className={`bg-black/50 w-full p-3 gap-1 rounded-full flex items-center  text-white font-Inter text-xl
+          className={`bg-black/50 w-full p-3 gap-1 rounded-full flex items-center  text-white font-Inter text-base
             ${showSkipBtn ? "opacity-100" : "hidde opacity-0"}  
             `}
         >
           Skip
-          <SkipForward size={24}  color="white" />
+          <SkipForward size={20}  color="white" />
         </Link>
 
         <button

@@ -116,6 +116,7 @@ const Result = () => {
             `}
             >
               <Image
+                // className="h-full w-full object-contain overflow-hidden flex-1"
                 className="h-full w-full object-contain overflow-hidden "
                 width={117}
                 height={255}
