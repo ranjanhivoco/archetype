@@ -207,12 +207,15 @@ const InstagramStoryPlayer = ({
         <Link
           // onClick={(e) => !displayBtns && e.stopPropagation()}
           href={displayBtns ? href : ""}
-          className={`bg-black/50 w-full p-3 gap-1 rounded-full flex items-center  text-white font-Inter text-base
-            ${showSkipBtn ? "opacity-100" : "hidde opacity-0"}  
+          className={`bg-black/50 w-full p-[10px] gap-1 rounded-full flex items-center  text-white font-Inter text-base
+            ${showSkipBtn ? "opacity-100" : "hidden"}  
             `}
         >
           Skip
-          <SkipForward size={20}  color="white" />
+          <SkipForward
+            size={20}
+            color="white"
+          />
         </Link>
 
         <button
@@ -222,7 +225,7 @@ const InstagramStoryPlayer = ({
             toggleMute();
           }}
           // onClick={toggleMute}
-          className="bg-black/50 p-3 rounded-full self-end"
+          className="bg-black/50 p-[10px] rounded-full self-end"
         >
           {isMuted ? <VolumeX color="white" /> : <Volume2 color="white" />}
         </button>
