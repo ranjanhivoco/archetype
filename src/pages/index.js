@@ -59,7 +59,7 @@ export default function Home() {
           </p>
         </div>
 
-        <LinkButton title={"Next"} href={"/archetype"} className={"h-[46px]"} />
+        <LinkButton title={"NEXT"} href={"/archetype"} className={"h-[46px] uppercase"} />
       </div>
     </div>
   );

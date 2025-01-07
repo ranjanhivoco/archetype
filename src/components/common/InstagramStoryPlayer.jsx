@@ -185,7 +185,7 @@ const InstagramStoryPlayer = ({
             e.target === e.currentTarget && setDisplayBtns(true);
           }}
           // onClick={togglePlayPause}
-          className="absolute inset-0 z-20 flex items-center justify-center "
+          className="absolute inset-0 z-20 flex items-center justify-center"
         >
           {!isPlaying && (
             <div className="bg-black/50 p-4 rounded-full pointer-events-none">
@@ -208,11 +208,7 @@ const InstagramStoryPlayer = ({
           // onClick={(e) => !displayBtns && e.stopPropagation()}
           href={displayBtns ? href : ""}
           className={`bg-black/50 p-3 rounded-full 
-            ${
-              showSkipBtn
-                ? "opacity-100"
-                : "opacity-0 "
-            }
+            ${showSkipBtn ? "opacity-100" : "hidden"}
             `}
         >
           <SkipForward color="white" />
