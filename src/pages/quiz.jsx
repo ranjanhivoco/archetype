@@ -21,8 +21,10 @@ const Quiz = () => {
 
   return (
     <div
-      className={`
-    h-svh bg-dark-brown  pt-14 w-full flex flex-col fixed inset-0`}
+      className={`h-svh bg-dark-brown  pt-14 w-full flex flex-col fixed inset-0
+          transition-transform duration-1000 ease-in-out
+          ${startAnimation ? "translate-x-0" : "translate-x-full"}
+    `}
     >
       {/* main quiz ui */}
       <div
