@@ -17,6 +17,42 @@ const InstagramStoryPlayer = ({
   const progressIntervalRef = useRef(null);
   const [isLoaded,setIsLoaded]=useState(false)
 
+
+  const [displayBtns, setDisplayBtns] = useState(true);
+
+  // useEffect(() => {
+  //   let timeoutId = null;
+  //   if (displayBtns) {
+  //     timeoutId = setTimeout(() => {
+  //       setDisplayBtns(false);
+  //     }, 2 * 1000);
+
+  //     return () => {
+  //       if (timeoutId) {
+  //         clearTimeout(timeoutId);
+  //       }
+  //     };
+  //   }
+  // }, [displayBtns]);
+
+
+  useEffect(() => {
+    let timeoutId=null
+    if (displayBtns) {
+      timeoutId = setTimeout(() => {
+        setDisplayBtns(false);
+      }, 4000);
+
+      // Cleanup timer when effect runs again or component unmounts
+      return () => {
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+      };
+    }
+  }, [displayBtns]); // Added isVisible to dependency array
+
+
   const resetVideo = () => {
     const video = videoRef.current;
     if (video) {
@@ -115,10 +151,15 @@ const InstagramStoryPlayer = ({
 
   return (
     <div
+      // onClick={(e) => {
+      //   console.log(e.target , e.currentTarget);
+
+      //   e.target === e.currentTarget && setDisplayBtns(true);
+      // }}
       className={`fixed inset-0 h-svh w-full bg-black 
-         transition-transform duration-1000 ease-in-out
-        ${isLoaded ? "translate-x-0" : "translate-x-full"} 
-        `}
+      transition-transform duration-1000 ease-in-out
+      ${isLoaded ? "translate-x-0" : "translate-x-full"} 
+      `}
     >
       {/* Progress Bar */}
       <div className="absolute top-2 left-0 right-0 z-10 px-2">
@@ -142,7 +183,13 @@ const InstagramStoryPlayer = ({
       {/* Central Play/Pause Overlayed */}
       {!isVideoEnded && (
         <div
-          onClick={togglePlayPause}
+          onClick={(e) => {
+            togglePlayPause();
+            console.log(e.target, e.currentTarget);
+
+            e.target === e.currentTarget && setDisplayBtns(true);
+          }}
+          // onClick={togglePlayPause}
           className="absolute inset-0 z-20 flex items-center justify-center "
         >
           {!isPlaying && (
@@ -153,15 +200,38 @@ const InstagramStoryPlayer = ({
         </div>
       )}
 
-      <div className="absolute top-[10%] flex flex-col right-4 z-30 gap-y-2">
+      <div
+        className={`absolute top-[10%] flex flex-col right-4 z-30 gap-y-2
+        transition-opacity ease-in-out duration-1000
+        ${
+          displayBtns
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
         <Link
-          href={href}
-          className={`bg-black/50 p-3 rounded-full ${showSkipBtn ? "opacity-100" : "opacity-0"}`}
+          // onClick={(e) => !displayBtns && e.stopPropagation()}
+          href={displayBtns ? href : ""}
+          className={`bg-black/50 p-3 rounded-full 
+            ${
+              showSkipBtn
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none"
+            }
+            `}
         >
           <SkipForward color="white" />
         </Link>
 
-        <button onClick={toggleMute} className="bg-black/50 p-3 rounded-full">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            if (!displayBtns) return;
+            toggleMute();
+          }}
+          // onClick={toggleMute}
+          className="bg-black/50 p-3 rounded-full"
+        >
           {isMuted ? <VolumeX color="white" /> : <Volume2 color="white" />}
         </button>
       </div>
