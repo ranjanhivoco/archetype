@@ -117,12 +117,19 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
 
   return (
     <div
-      className={`w-full h-full overflow-hidden
-                transition-opacity duration-[1.5s] ease-in-out
-                ${isLoaded ? "opacity-100" : "opacity-0"}
-                `}
+      className={`
+
+        w-full
+        h-full 
+        overflow-hidden
+        transition-opacity 
+        duration-[1.5s] 
+        ease-in-out
+        ${isLoaded ? "opacity-100" : "opacity-0"}
+        `}
     >
-      <div className="w-full h-full  ">
+
+      <div className="w-full h-full ">
         {/* this div  takes the rest of the page */}
         {questions?.map((question, index) => (
           <TinderCard
@@ -137,9 +144,6 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
             // preventSwipe={["left", "right", "up", "down"]} // Prevent all user swipes
           >
             <div
-              //  first question will be on top brother
-
-              // style={{ zIndex: questions?.length - index }}
               className="h-full w-full px-7 rounded-xl overflow-hidden "
             >
               <QuizComponent

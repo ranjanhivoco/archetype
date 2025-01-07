@@ -14,12 +14,15 @@ const Archetype = () => {
         <SmoothCardCarousel reverse={false} scrollDirection="up" />
         <SmoothCardCarousel scrollDirection="down" reverse={false} />
         <SmoothCardCarousel reverse={true} scrollDirection="up" />
+
+        <div className="absolute inset-0 bg-cream/40 z-10"></div> 
+        {/* takes the whole div stacked above other elements since z 10 and can display anything */}
       </div>
 
       <LinkButton
         href={"/intro-video"}
         title={"START QUIZ"}
-        className={"uppercase absolute bottom-9 -translate-x-1/2 left-1/2 z-20"}
+        className={"uppercase absolute bottom-9 -translate-x-1/2 left-1/2 z-30"}
       />
     </div>
   );

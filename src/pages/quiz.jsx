@@ -22,7 +22,7 @@ const Quiz = () => {
   return (
     <div
       className={`
-    h-svh bg-dark-brown  pt-14 w-full flex flex-col `}
+    h-svh bg-dark-brown  pt-14 w-full flex flex-col fixed inset-0`}
     >
       {/* main quiz ui */}
       <div
