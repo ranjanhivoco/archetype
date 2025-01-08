@@ -12,6 +12,8 @@ const Result = () => {
   const { data } = router.query;
   const object = data ? JSON.parse(decodeURIComponent(data)) : [];
 
+  console.log(object);
+
   useEffect(() => {
     if (data?.length <= 0) {
       router.back();
@@ -64,10 +66,10 @@ const Result = () => {
         </h2>
       </div>
 
-      {/* main content */}
+      {/* main content  */}
       <div className="flex flex-col self-center flex-">
         <div className="relative flex- mb-[] w-full  flex flex-col gap-y- justify-center ">
-          {/* contents div non Gradient part */}
+          {/* top part grad box*/}
           <div className="flex relative z-10 w-full mx-auto min-h-[16.25rem]  aspect-[1.25] flex- px-2 ">
             {/* left side text and image */}
             <div
@@ -117,7 +119,7 @@ const Result = () => {
             >
               <Image
                 // className="h-full w-full object-contain overflow-hidden flex-1"
-                className="h-full w-full object-contain overflow-hidden "
+                className="h-full w-full object-contain overflow-hidden flex-"
                 width={117}
                 height={255}
                 src={
@@ -132,7 +134,6 @@ const Result = () => {
                 style={{
                   writingMode: "vertical-rl",
                 }}
-
                 // className="overflow-y-scroll mb-2 whitespace-nowrap font-Edo h-[45%] self-end text-right text-xl leading-6 font-normal uppercase text-white"
 
                 className="overflow-y-scroll overflow-x-hidden  mb-2 whitespace-nowrap font-Edo  h-[45%] self-end text-left  font-normal uppercase text-white  text-xl leading-"
@@ -141,31 +142,6 @@ const Result = () => {
               </p>
             </div>
           </div>
-
-          {/* gradient wala div  */}
-          {/* <div
-          className={`z-0 border border-black absolute w-full flex -translate-x-1/2 min-h-[15.63rem] aspect-[1.3] flex-1 -bottom-[40%] left-1/2 rounded-3xl transition-opacity ${firstAnimationClass}`}
-          style={{
-            transitionDuration: "1s", // Adjust the duration here
-            background:
-              animationCounter >= 1
-                ? `linear-gradient(90deg, ${
-                    object[0]?.color || "#F0B30E"
-                  } 0%,  ${object[1]?.color || "#7F87DA"} 100%)`
-                : "none",
-          }}
-        >
-          <p
-            className={`absolute w-full  bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-4 pb-5 
-          transition-transform duration-1000
-          ${animationCounter >= 3 ? "translate-y-0" : "translate-y-[130%]"}
-          `}
-          >
-            A unique combination, this allows you to have an informed and
-            prepared approach your career, while keeping passion curiosity in
-            the forefront
-          </p>
-        </div> */}
 
           {/* new gradient */}
           <div className="absolute bottom-0 left-0 right-0 h-[55%]">
@@ -201,7 +177,6 @@ const Result = () => {
           </p>
         </div>
       </div>
-      {/* </div> */}
 
       {/* Footer section */}
       <div className=" bottom-9  left-0  w-full flex flex-col  gap-y-10">

@@ -10,7 +10,7 @@ const LinkButton = ({href,title,className,skip}) => {
       href={href}
     >
       {title}
-      {skip ? <SkipForward size={24}  /> : <ArrowRight size={24} />}
+      {skip ? <SkipForward size={24}  /> : <ArrowRight size={ 24} />}
     </Link>
   );
 };

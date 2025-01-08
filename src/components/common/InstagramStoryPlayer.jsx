@@ -207,7 +207,7 @@ const InstagramStoryPlayer = ({
         <Link
           // onClick={(e) => !displayBtns && e.stopPropagation()}
           href={displayBtns ? href : ""}
-          className={`bg-black/50 w-full p-[10px] gap-1 rounded-full flex items-center  text-white font-Inter text-base
+          className={`bg-black/50 w-full p-[10px] gap-1 rounded-full flex items-center text-white font-Inter text-base
             ${showSkipBtn ? "opacity-100" : "hidden"}  
             `}
         >
