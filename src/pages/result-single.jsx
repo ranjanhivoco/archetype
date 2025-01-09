@@ -22,12 +22,9 @@ const Result = () => {
   
   ];
 
-  console.log(
-    object[0].isLeft
-  )
   
 
-  console.log(object);
+  console.log(object.length);
 
   useEffect(() => {
     if (data?.length <= 0) {
@@ -82,81 +79,88 @@ const Result = () => {
       </div>
 
       {/* single Archetype result */}
-
-      <div className="flex flex-col rounded-3xl relative w-full  aspect-[1.25] flex- px2">
-        {/* top part */}
-        <div
-          className={`relative z-10 w-full min-h-[16.25rem] flex items-center  justify-center px-4 `}
-        >
-          {!object[0].isLeft && (
-            // for image in the right and this text to the left 
-            // text comes from the left
-            <p
-              className={`overflow-x-scroll h-[55%] max-w-[60%] self-end flex items-center whitespace-nowrap font-Edo text-center text-[2rem] leading-9 font-normal uppercase text-white
+      {object.length === 1 && (
+        <div className="flex flex-col rounded-3xl relative w-full  aspect-[1.25] flex- px2">
+          {/* top part */}
+          <div
+            className={`relative z-10 w-full min-h-[16.25rem] flex items-center  justify-center px-4 `}
+          >
+            {!object[0].isLeft && (
+              // for image in the right and this text to the left
+              // text comes from the left
+              <p
+                className={`overflow-x-scroll h-[55%] max-w-[60%] self-end flex items-center whitespace-nowrap font-Edo text-center text-[2rem] leading-9 font-normal uppercase text-white
             transition-transform duration-1000
             ${animationCounter >= 1 ? "translate-x-0" : "-translate-x-52"}
             `}
-            >
-              {object[0]?.title?.replace(/\bthe\b/g, "") || "explorer"}
-            </p>
-          )}
+              >
+                {object[0]?.title?.replace(/\bthe\b/g, "") || "explorer"}
+              </p>
+            )}
 
-          <Image
-            className={`h-full w-auto object-contain overflow-hidden 
+            <Image
+              className={`h-full w-auto object-contain overflow-hidden 
             transition-transform duration-1000
-            ${animationCounter >= 1 ? "translate-x-0" : object[0].isLeft? "-translate-x-52" :"translate-x-96"}
-            `}
-            width={117}
-            height={255}
-            src={
-              object[0]?.image ||
-              "https://s3-alpha-sig.figma.com/img/dd46/d539/0f89514a6f57d5aee2c9a3ed5827589b?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Wt5TIaj0bqclUNAcj-gggCiQxdkmE-SyB4ZSeXf7NCZA5uCYPb9gbD-hf57QLvQPDN4BqtM3hDzFfvStD2UeTFxkp4yngxDsi6MAnQ~-VHdOD7cwKiFKUNJbHKRKbzR2HmJONJj2hXot-K994MYQp6ZmAdOzmYATmC1RzHgftQc394a6qA4USBEJ2UUL2Pk9ZhxMdlcvNyeLfnZFZiBoHi-lgs6oLBvX-clxGDuCmMOLsQnjBI7PXaet5fhh~DgkoCaKbeSUy3S~6kwf8WwQ7Yl0dFrZ5~xmLtPOAylJHzpJKg-dJEY8ytueMSF67BMZHqmywTMePYXkvI8~zJVPBg__"
+            ${
+              animationCounter >= 1
+                ? "translate-x-0"
+                : object[0].isLeft
+                ? "-translate-x-52"
+                : "translate-x-96"
             }
-            alt="archetype image"
-            priority={true}
-          />
+            `}
+              width={117}
+              height={255}
+              src={
+                object[0]?.image ||
+                "https://s3-alpha-sig.figma.com/img/dd46/d539/0f89514a6f57d5aee2c9a3ed5827589b?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Wt5TIaj0bqclUNAcj-gggCiQxdkmE-SyB4ZSeXf7NCZA5uCYPb9gbD-hf57QLvQPDN4BqtM3hDzFfvStD2UeTFxkp4yngxDsi6MAnQ~-VHdOD7cwKiFKUNJbHKRKbzR2HmJONJj2hXot-K994MYQp6ZmAdOzmYATmC1RzHgftQc394a6qA4USBEJ2UUL2Pk9ZhxMdlcvNyeLfnZFZiBoHi-lgs6oLBvX-clxGDuCmMOLsQnjBI7PXaet5fhh~DgkoCaKbeSUy3S~6kwf8WwQ7Yl0dFrZ5~xmLtPOAylJHzpJKg-dJEY8ytueMSF67BMZHqmywTMePYXkvI8~zJVPBg__"
+              }
+              alt="archetype image"
+              priority={true}
+            />
 
-          {object[0].isLeft && (
-            // for image in the left and this text to the right 
-            // text comes from the right
-            <p
-              className={`overflow-x-scroll h-[55%] max-w-[60%] self-end flex items-center whitespace-nowrap font-Edo text-center text-[2rem] leading-9 font-normal uppercase text-white
+            {object[0].isLeft && (
+              // for image in the left and this text to the right
+              // text comes from the right
+              <p
+                className={`overflow-x-scroll h-[55%] max-w-[60%] self-end flex items-center whitespace-nowrap font-Edo text-center text-[2rem] leading-9 font-normal uppercase text-white
             transition-transform duration-1000
             ${animationCounter >= 1 ? "translate-x-0" : "translate-x-96"}
             `}
-            >
-              {object[0]?.title?.replace(/\bthe\b/g, "") || "explorer"}
-            </p>
-          )}
+              >
+                {object[0]?.title?.replace(/\bthe\b/g, "") || "explorer"}
+              </p>
+            )}
 
-          <div className="absolute bottom-0 left-0 right-0 h-[55%] w-full z-[-10]  border-white">
-            {/* Gradient background with rounded top corners */}
-            <div
-              style={{
-                backgroundColor: `${object[0]?.color || "#B40C0B"} `,
-              }}
-              className="absolute inset-0  rounded-t-3xl w-full"
-            />
+            <div className="absolute bottom-0 left-0 right-0 h-[55%] w-full z-[-10]  border-white">
+              {/* Gradient background with rounded top corners */}
+              <div
+                style={{
+                  backgroundColor: `${object[0]?.color || "#B40C0B"} `,
+                }}
+                className="absolute inset-0  rounded-t-3xl w-full"
+              />
+            </div>
           </div>
-        </div>
 
-        {/* bottom part */}
-        <div
-          style={{ backgroundColor: `${object[0]?.color || "#B40C0B"}` }}
-          className="flex rounded-b-3xl"
-        >
-          <p
-            className={`w-full text-left bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-3 pb-5 
+          {/* bottom part */}
+          <div
+            style={{ backgroundColor: `${object[0]?.color || "#B40C0B"}` }}
+            className="flex rounded-b-3xl"
+          >
+            <p
+              className={`w-full text-left bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-3 pb-5 
             transition-transform duration-1000
             ${animationCounter >= 3 ? "translate-y-0" : "translate-y-[130%]"}
           `}
-          >
-            A unique combination, this allows you to have an informed and
-            prepared approach your career, while keeping passion curiosity in
-            the forefront
-          </p>
+            >
+              A unique combination, this allows you to have an informed and
+              prepared approach your career, while keeping passion curiosity in
+              the forefront
+            </p>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Footer section */}
       <div className=" bottom-9  left-0  w-full flex flex-col  gap-y-10">

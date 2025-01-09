@@ -1,10 +1,16 @@
+import { DataContext } from "@/context/DataContext";
 import { Download, Share2 } from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const ThankYouScreen = () => {
+  const { pdfData } = useContext(DataContext);
+  const fileUrl = pdfData.pdfUrl
+  const fileName=pdfData.title
+  console.log(pdfData);
   const [shared, setShared] = useState(false);
   const [error, setError] = useState('');
+
 
   const [startAnimation, setStartAnimation] = useState(false);
   useEffect(() => {
@@ -19,14 +25,32 @@ const ThankYouScreen = () => {
 
     try {
       // Check if Web Share API is supported
+      const response = await fetch(fileUrl);
+      const blob = await response.blob();
+      const file = new File([blob], `${fileName}`, { type: 'application/pdf' });
+
       if (!navigator.share) {
         throw new Error('Web Share API not supported');
       }
-      await navigator.share({
-        title: 'Check out this PDF!',
-        text: 'Here is a PDF that you might find interesting.',
-        url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-      });
+      
+      if (navigator.share) {
+        await navigator.share({
+          title: fileName,
+          text: "Here is a PDF that you might find interesting.",
+          url: fileUrl,
+          files: [file],
+        });
+      }
+      else{
+        const shareUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = shareUrl;
+        a.download = `${pdfTitle}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(shareUrl);
+      }
 
       setShared(true);
       setTimeout(() => setShared(false), 2000); // Reset success state after 2s
@@ -36,13 +60,40 @@ const ThankYouScreen = () => {
     }
   };
 
-  const handleDownload = () => {
-    const fileUrl = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
-    window.open(fileUrl, '_blank'); // Opens the PDF in a new tab
+  const handleDownload = async() => {
+    // window.open(fileUrl, '_blank'); // Opens the PDF in a new tab
+    try {
+      const response = await fetch(fileUrl);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      
+      link.href = url;
+      link.download = fileName;
+      
+      // Required for Firefox
+      document.body.appendChild(link);
+      
+      link.click();
+      
+      // Cleanup
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      
+    } catch (error) {
+      console.error('Download failed:', error);
+      alert('Failed to download file. Please try again later.');
+    } finally {
+      // setIsLoading(false);
+    }
+
   };
   
-
-
 
   return (
     <div

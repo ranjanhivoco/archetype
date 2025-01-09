@@ -12,11 +12,11 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
   const [error, setError] = useState(null);
   const router = useRouter();
 
-  const URL = "https://backend.hivoco.com/quiz/questions";
   
   const fetchData = async () => {
+    const url = "https://backend.hivoco.com/quiz/questions";
     try {
-      const response = await fetch(URL);
+      const response = await fetch(url);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -31,10 +31,10 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
   };
 
   async function postData(data) {
+    const url=         "https://backend.hivoco.com/quiz/calculate-result"
     try {
       setIsLoading(true);
-      const response = await fetch(
-        "https://backend.hivoco.com/quiz/calculate-result",
+      const response = await fetch(url,
         {
           method: "POST",
           headers: {
@@ -55,7 +55,7 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
       result &&
         router.push({
           pathname: "/result",
-          query: { data: encodeURIComponent(JSON.stringify(result.archedata)) },
+          query: { data: encodeURIComponent(JSON.stringify(result)) },
         });
 
       console.log("Success:", result);
