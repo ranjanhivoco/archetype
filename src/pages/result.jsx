@@ -18,7 +18,7 @@ const Result = () => {
     if (data?.length <= 0) {
       router.back();
     } else if (data?.length > 0) {
-      setPdfData(object.pdf);
+      setPdfData(object?.pdf);
     }
   }, [data?.length]);
 
