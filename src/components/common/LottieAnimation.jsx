@@ -2,6 +2,8 @@ import animation from "@/assets/animation.json";
 import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
+
+
 const LottieAnimation = () => {
   return (
     <div className="flex  flex-col justify-center items-center w-full absolute z-50 top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2">

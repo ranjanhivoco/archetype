@@ -1,5 +1,5 @@
 import CardStack from "@/components/common/CardStack";
-import LottieAnimation from "@/components/common/LottieAnimation";
+// import LottieAnimation from "@/components/common/LottieAnimation";
 import ProgressBar from "@/components/common/ProgressBar";
 import QuizComponent from "@/components/common/QuizComponent";
 import TinderCardStack from "@/components/common/TinderCardStack";
@@ -8,6 +8,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import dynamic from 'next/dynamic';
+
+const LottieAnimation = dynamic(() => import('../components/common/LottieAnimation'), {
+  // loading: () => <p>Loading...</p>, 
+  ssr: false, 
+});
+
 
 const Quiz = () => {
   const [step, setStep] = useState(1);

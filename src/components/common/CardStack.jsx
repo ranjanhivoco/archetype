@@ -118,12 +118,11 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
   return (
     <div
       className={`
-
         w-full
         h-full 
         overflow-hidden
         transition-opacity 
-        duration-[1.5s] 
+        duration-1000
         ease-in-out
         ${isLoaded ? "opacity-100" : "opacity-0"}
         `}
