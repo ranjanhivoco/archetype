@@ -69,7 +69,7 @@ const Result = () => {
           <div
             className={`relative z-10 w-full min-h-[16.25rem] flex items-center  justify-center px-4 `}
           >
-            {!object.archedata[0].isLeft && (
+            {!object?.archedata[0].isLeft && (
               // for image in the right and this text to the left
               // text comes from the left
               <p
@@ -78,7 +78,7 @@ const Result = () => {
             ${animationCounter >= 1 ? "translate-x-0" : "-translate-x-52"}
             `}
               >
-                {object.archedata[0]?.title?.replace(/\bthe\b/g, "") ||
+                {object?.archedata[0]?.title?.replace(/\bthe\b/g, "") ||
                   "explorer"}
               </p>
             )}
@@ -89,7 +89,7 @@ const Result = () => {
             ${
               animationCounter >= 1
                 ? "translate-x-0"
-                : object.archedata[0].isLeft
+                : object?.archedata[0].isLeft
                 ? "-translate-x-52"
                 : "translate-x-96"
             }
@@ -97,14 +97,14 @@ const Result = () => {
               width={117}
               height={255}
               src={
-                object.archedata[0]?.image ||
+                object?.archedata[0]?.image ||
                 "https://s3-alpha-sig.figma.com/img/dd46/d539/0f89514a6f57d5aee2c9a3ed5827589b?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Wt5TIaj0bqclUNAcj-gggCiQxdkmE-SyB4ZSeXf7NCZA5uCYPb9gbD-hf57QLvQPDN4BqtM3hDzFfvStD2UeTFxkp4yngxDsi6MAnQ~-VHdOD7cwKiFKUNJbHKRKbzR2HmJONJj2hXot-K994MYQp6ZmAdOzmYATmC1RzHgftQc394a6qA4USBEJ2UUL2Pk9ZhxMdlcvNyeLfnZFZiBoHi-lgs6oLBvX-clxGDuCmMOLsQnjBI7PXaet5fhh~DgkoCaKbeSUy3S~6kwf8WwQ7Yl0dFrZ5~xmLtPOAylJHzpJKg-dJEY8ytueMSF67BMZHqmywTMePYXkvI8~zJVPBg__"
               }
               alt="archetype image"
               priority={true}
             />
 
-            {object[0].archedata.isLeft && (
+            {object[0]?.archedata.isLeft && (
               // for image in the left and this text to the right
               // text comes from the right
               <p
@@ -113,7 +113,7 @@ const Result = () => {
             ${animationCounter >= 1 ? "translate-x-0" : "translate-x-96"}
             `}
               >
-                {object.archedata[0]?.title?.replace(/\bthe\b/g, "") ||
+                {object?.archedata[0]?.title?.replace(/\bthe\b/g, "") ||
                   "explorer"}
               </p>
             )}
@@ -123,7 +123,7 @@ const Result = () => {
               <div
                 style={{
                   backgroundColor: `${
-                    object.archedata[0]?.color || "#B40C0B"
+                    object?.archedata[0]?.color || "#B40C0B"
                   } `,
                 }}
                 className="absolute inset-0  rounded-t-3xl w-full"
@@ -134,7 +134,7 @@ const Result = () => {
           {/* bottom part */}
           <div
             style={{
-              backgroundColor: `${object.archedata[0]?.color || "#B40C0B"}`,
+              backgroundColor: `${object?.archedata[0]?.color || "#B40C0B"}`,
             }}
             className="flex rounded-b-3xl"
           >
@@ -171,7 +171,7 @@ const Result = () => {
                   }}
                   className="overflow-y-scroll mb-2 whitespace-nowrap font-Edo h-[45%] self-end text-right text-xl leading-6 font-normal uppercase text-white"
                 >
-                  {object.archedata[0]?.title.replace(/\bthe\b/g, "") ||
+                  {object?.archedata[0]?.title.replace(/\bthe\b/g, "") ||
                     "explorer"}
                 </p>
 
@@ -179,7 +179,7 @@ const Result = () => {
                   className="h-full w-full object-contain overflow-hidden flex-1"
                   width={117}
                   height={255}
-                  src={object.archedata[0]?.image || ""}
+                  src={object?.archedata[0]?.image || ""}
                   alt="left archetype image"
                   priority={true}
                 />
@@ -211,7 +211,7 @@ const Result = () => {
                   width={117}
                   height={255}
                   src={
-                    object.archedata[1]?.image ||
+                    object?.archedata[1]?.image ||
                     "https://s3-alpha-sig.figma.com/img/cc67/3930/4a1cfbd86ee2a31801a50fe8f00ccd1d?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MuV0qNv5AtdCAUFj-kVyMkck5vFzI1NKOG4JpF7Es-SVC4Sjjh5BbYN5iLrGTjU~NWQc6p10VzlH9zB8fdrl7pgbUa-iTX4H~7Mmc88HrjKbdwIn-12IfV~Rex5y-m0QM~5kvu5IDca7R930R1PlvUQcZdgjb6biTThWYZcGYi9nAX8kHGQyld99-q1TFBV4Xy3KgrgQ5RoFF~3WCKqazy6DSXGGkip4ePyIE9mUW8kPJCkBF3IN9q-RtP8Q6DvgBSAv4Hrae2FU0L97SoPKt2xmKfnu4nIKeOC5O35dcZ2Ut9TE~ceG3vWynuUKsRNvc5-d~iVxhgWUpOdPtbn7wg__"
                   }
                   alt="right archetype image"
@@ -226,7 +226,7 @@ const Result = () => {
 
                   className="overflow-y-scroll overflow-x-hidden  mb-2 whitespace-nowrap font-Edo  h-[45%] self-end text-left  font-normal uppercase text-white  text-xl leading-"
                 >
-                  {object.archedata[1]?.title.replace(/\bthe\b/g, "") ||
+                  {object?.archedata[1]?.title.replace(/\bthe\b/g, "") ||
                     "explorer"}
                 </p>
               </div>
@@ -238,8 +238,8 @@ const Result = () => {
               <div
                 style={{
                   background: `linear-gradient(90deg, ${
-                    object.archedata[0]?.color || "#F0B30E"
-                  } 0%, ${object.archedata[1]?.color || "#7F87DA"} 100%)`,
+                    object?.archedata[0]?.color || "#F0B30E"
+                  } 0%, ${object?.archedata[1]?.color || "#7F87DA"} 100%)`,
                 }}
                 className="absolute inset-0  rounded-t-3xl"
               />
@@ -249,8 +249,8 @@ const Result = () => {
           <div
             style={{
               background: `linear-gradient(90deg, ${
-                object.archedata[0]?.color || "#F0B30E"
-              } 0%, ${object.archedata[1]?.color || "#7F87DA"} 100%)`,
+                object?.archedata[0]?.color || "#F0B30E"
+              } 0%, ${object?.archedata[1]?.color || "#7F87DA"} 100%)`,
             }}
             className="flex flex-1  rounded-b-3xl  h-full"
           >
