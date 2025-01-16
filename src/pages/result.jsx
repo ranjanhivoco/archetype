@@ -41,6 +41,8 @@ const Result = () => {
     };
   }, []);
 
+  
+
   return (
     <div className="bg-off-white text-black h-svh px-6 w-full flex flex-col justify-evenly gap-y-3 overflow-hidden">
       <div className="flex flex-col gap-y-8  ">
@@ -139,14 +141,17 @@ const Result = () => {
             className="flex rounded-b-3xl"
           >
             <p
-              className={`w-full text-left bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-3 pb-5 
+              className={`w-full overflow-y-auto text-left bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-3 pb-5 
             transition-transform duration-1000
             ${animationCounter >= 3 ? "translate-y-0" : "translate-y-[130%]"}
           `}
             >
+              {object?.description?.description ||
+                `
               A unique combination, this allows you to have an informed and
               prepared approach your career, while keeping passion curiosity in
-              the forefront
+              the forefront 
+              `}
             </p>
           </div>
         </div>
@@ -255,14 +260,15 @@ const Result = () => {
             className="flex flex-1  rounded-b-3xl  h-full"
           >
             <p
-              className={`w-full  bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-3 pb-5 
+              className={`w-full overflow-y-scroll bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-3 pb-5 
           transition-transform duration-1000
           ${animationCounter >= 3 ? "translate-y-0" : "translate-y-[130%]"}
           `}
             >
-              A unique combination, this allows you to have an informed and
-              prepared approach your career, while keeping passion curiosity in
-              the forefront
+              {object?.description?.description}
+              {/* A unique combination, this
+              allows you to have an informed and prepared approach your career,
+              while keeping passion curiosity in the forefront */}
             </p>
           </div>
         </div>
