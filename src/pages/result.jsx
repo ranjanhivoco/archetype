@@ -1,4 +1,5 @@
 import LinkButton from "@/components/common/LinkButton";
+import { ArchetypeContext } from "@/context/ArchetypeContext";
 import { DataContext } from "@/context/DataContext";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
@@ -7,18 +8,31 @@ import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 
 const Result = () => {
-  const [animationCounter, setAnimationCounter] = useState(0);
   const router = useRouter();
+  const [animationCounter, setAnimationCounter] = useState(0);
   const { data } = router.query;
   const object = data ? JSON.parse(decodeURIComponent(data)) : [];
+  
+  useEffect(() => {
+    if (object.length === 0) {
+      router.push("/");
+    }
+  }, [object,router]);
+  
 
   const { pdfData, setPdfData } = useContext(DataContext);
+  const { ArchetypeData, setArchetypeData } = useContext(ArchetypeContext);
   
+  // useEffect(() => {
+  //   console.log(ArchetypeData,"ArchetypeData");
+  // }, [ArchetypeData]);
+
   useEffect(() => {
     if (data?.length <= 0) {
       router.back();
     } else if (data?.length > 0) {
       setPdfData(object?.pdf);
+      setArchetypeData(object?.archedata)
     }
   }, [data?.length]);
 
@@ -42,7 +56,9 @@ const Result = () => {
   }, []);
 
   
-
+  if (object.length === 0) {
+    return null;
+  }
   return (
     <div className="bg-off-white text-black h-svh px-6 w-full flex flex-col justify-evenly gap-y-3 overflow-hidden">
       <div className="flex flex-col gap-y-8  ">
@@ -260,9 +276,9 @@ const Result = () => {
             className="flex flex-1  rounded-b-3xl  h-full"
           >
             <p
-              className={`w-full overflow-y-scroll bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-3 pb-5 
-          transition-transform duration-1000
-          ${animationCounter >= 3 ? "translate-y-0" : "translate-y-[130%]"}
+            className={`w-full overflow-y-scroll bottom-0 font-medium text-sm leading-tight text-white  px-4 pt-3 pb-5 
+            transition-transform duration-1000
+            ${animationCounter >= 3 ? "translate-y-0" : "translate-y-[130%]"}
           `}
             >
               {object?.description?.description}
@@ -286,8 +302,8 @@ const Result = () => {
         </h2>
 
         <LinkButton
-          title={"Know More"}
-          href={"/know-more"}
+          title={"NEXT"}
+          href={"/signup"}
           className={`transition-transform duration-1000 h-[46px] w-full
                     ${
                       animationCounter >= 3

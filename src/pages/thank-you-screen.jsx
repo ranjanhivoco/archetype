@@ -1,20 +1,28 @@
 import { DataContext } from "@/context/DataContext";
 import { Download, Share2 } from "lucide-react";
 import Image from "next/image";
+import { Router, useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 
 const ThankYouScreen = () => {
   const { pdfData } = useContext(DataContext);
+  const router = useRouter()
   const fileUrl = pdfData.pdfUrl
   const fileName=pdfData.title
-  console.log(pdfData);
+  console.log(pdfData,"pdfData");
   const [shared, setShared] = useState(false);
   const [error, setError] = useState('');
+
+  
 
 
   const [startAnimation, setStartAnimation] = useState(false);
   useEffect(() => {
-    setStartAnimation(true);
+    if (Array.isArray(pdfData) && pdfData.length === 0) {
+      router.push("/quiz");
+    } else {
+      setStartAnimation(true);
+    }
   }, []);
 
 
@@ -94,6 +102,9 @@ const ThankYouScreen = () => {
 
   };
   
+  if (Array.isArray(pdfData) && pdfData.length === 0) {
+    return null;
+  }
 
   return (
     <div

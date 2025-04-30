@@ -1,12 +1,17 @@
 import QuizComponent from "@/components/common/QuizComponent";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useContext } from "react";
 import TinderCard from "react-tinder-card";
 import { useRouter } from "next/router";
+import { ResultContext } from "@/context/ResultContext";
 
 const CardSwiper = ({ step, setStep, setIsLoading }) => {
   const [questions, setQuestions] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [result, setResult] = useState([]);
+  // const [result, setResult] = useState([]);
+  const { result, setResult } = useContext(ResultContext);
+  console.log(result,'res');
+  
+  
 
   const [currentIndex, setCurrentIndex] = useState(11);
   const [error, setError] = useState(null);
@@ -31,7 +36,7 @@ const CardSwiper = ({ step, setStep, setIsLoading }) => {
   };
 
   async function postData(data) {
-    const url=         "https://backend.hivoco.com/quiz/calculate-result"
+    const url="https://backend.hivoco.com/quiz/calculate-result"
     try {
       setIsLoading(true);
       const response = await fetch(url,

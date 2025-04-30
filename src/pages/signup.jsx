@@ -1,19 +1,69 @@
 import LinkButton from "@/components/common/LinkButton";
+import { ArchetypeContext } from "@/context/ArchetypeContext";
+import { DataContext } from "@/context/DataContext";
+import { ResultContext } from "@/context/ResultContext";
 import { ArrowRight, MoveLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
 
 function Signup() {
-
   const [startAnimation, setStartAnimation] = useState(false);
-  const [email,setEmail]=useState('')
-  const [name,setName]=useState('')
-
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const { result, setResult } = useContext(ResultContext);
+  const { pdfData, setPdfData } = useContext(DataContext);
+  const { ArchetypeData, setArchetypeData } = useContext(ArchetypeContext);
+    
+  const router =useRouter()
+  console.log(ArchetypeData,"ArchetypeData");
+  
+  console.log(email,name);
+  
+  
+  
   useEffect(() => {
-        setStartAnimation(true);
+    if (ArchetypeData.length === 0) {
+      router.push("/quiz");
+    }
+    setStartAnimation(true);
   }, []);
 
+  async function sendData( ) {
+    if (!name || !email) return;
+
+    const url = "https://backend.hivoco.com/user/save-user-data";
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "name": name,
+          "email": email,
+          "quiz": result,
+          "result": ArchetypeData,
+          "pdfUrl": pdfData?.pdfUrl,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const res = await response.json();      
+      router.push("thank-you-screen");
+
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+
+  if (ArchetypeData.length === 0) {
+    return null;
+  }
   return (
     <div className="flex justify-center items-center h-svh bg-dark-brown py-10">
       <div className=" text-white px-8 h-full flex flex-col gap-y-10">
@@ -37,7 +87,11 @@ function Signup() {
             <h2
               className={`
               transition-all duration-1000 ease-in-out
-            ${startAnimation ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}
+            ${
+              startAnimation
+                ? "translate-y-0 opacity-100"
+                : "translate-y-20 opacity-0"
+            }
               text-xl font-bold  text-center tracking-wide`}
             >
               To Get Your Report
@@ -45,11 +99,15 @@ function Signup() {
           </div>
         </section>
 
-        <form className="flex flex-col flex-1 justify-between">
+        <form  className="flex flex-col flex-1 justify-between">
           <div
             className={`
             transition-all duration-1000 ease-in-out
-            ${startAnimation ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}
+            ${
+              startAnimation
+                ? "translate-y-0 opacity-100"
+                : "translate-y-20 opacity-0"
+            }
             `}
           >
             <input
@@ -76,7 +134,7 @@ function Signup() {
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              pattern=".+@example\.com"
+              // pattern=".+@example\.com"
               type="email"
               name="email"
               autoComplete="email"
@@ -93,18 +151,23 @@ function Signup() {
             />
           </div>
 
-          <Link
-            href={"thank-you-screen"}
+          <button
+          type="button"
+            // href={"thank-you-screen"}
+            onClick={sendData}
             className={`
               transition-all duration-1000 ease-in-out
-              ${startAnimation ? "translate-y-0 opacity-100" : "translate-y-[200%] opacity-0"}
+              ${
+                startAnimation
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-[200%] opacity-0"
+              }
               flex w-full items-center justify-center px-2 py-3 gap-2 bg-[#FFF3E140] rounded-[40px] text-white font-semibold text-sm`}
           >
             <span>SUBMIT</span>
             <ArrowRight size={20} />
-          </Link>
+          </button>
 
-          {/* <LinkButton href={"thankyouscreen"} title={'SUBMIT'} className={'uppercase w-full h-11 bg-[#FFF3E140]'} /> */}
         </form>
       </div>
     </div>
